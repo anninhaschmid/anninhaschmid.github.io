@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio Web de Anna Schmidt</title>
+
+  <meta name="description" content="Portfólio web de Anna Schmidt, desenvolvedora full stack com foco em soluções front-end e back-end.">
+  <meta name="author" content="Anna Schmidt">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Portfólio Web de Anna Schmidt" />
+  <meta property="og:description" content="Portfólio profissional com foco em desenvolvimento front-end, back-end e soluções em Python." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://anninhaschmid.github.io" />
+
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/732/732212.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      min-height: 200vh;
+    }
+    header {
+      text-align: center;
+      padding-bottom: 2rem;
+      background-color: rgba(0,0,0,0.6);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0.3rem;
+      color: #ff4c4c;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    .tagline {
+      font-size: 1.3rem;
+      color: #ffa6a6;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .highlight-links {
+      margin-top: 1rem;
+    }
+    .highlight-links a {
+      display: inline-block;
+      background-color: #1e1e1e;
+      color: #ff4c4c;
+      border: 2px solid #ff4c4c;
+      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      margin: 0.3rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: pulse 1.5s infinite;
+    }
+    .highlight-links a:hover {
+      background-color: #ff4c4c;
+      color: #1e1e1e;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    section {
+      margin: 2rem 0;
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      background-color: rgba(31, 31, 31, 0.9);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .section-title i {
+      margin-right: 0.5rem;
+      color: #ff4c4c;
+    }
+    footer {
+      text-align: center;
+      padding-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    a {
+      color: #ffa6a6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Anna Schmidt</h1>
+    <p class="tagline">Desenvolvedora Front end e Back end Junior</p>
+    <div class="highlight-links">
+      <a href="https://github.com/anninhaschmid" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/anna-schmidt-790b812b3/" target="_blank">LinkedIn</a>
+    </div>
+  </header>
+
+  <section class="reveal">
+    <h2 class="section-title"><i class="fas fa-user"></i>Sobre Mim</h2>
+    <p>Sou uma desenvolvedora full stack apaixonada por criar experiências digitais intuitivas e elegantes. Tenho foco especial em front-end moderno, mas também domino back-end com Node.js e Python.</p>
+  </section>
+
+  <section class="reveal">
+    <h2 class="section-title"><i class="fas fa-code"></i>Habilidades</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>React, Node.js</li>
+      <li>Git, Python</li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <h2 class="section-title"><i class="fas fa-star"></i>Projeto em Destaque</h2>
+    <p>Web HTML Portfolio — <a href="https://github.com/anninhaschmid/web.html" target="_blank">ver no GitHub</a></p>
+  </section>
+
+  <section class="reveal">
+    <h2 class="section-title"><i class="fas fa-folder-open"></i>Outros Projetos</h2>
+    <ul>
+      <li>Primeiro Projeto em Python — <a href="https://github.com/anninhaschmid/primeiro-projeto-em-py" target="_blank">Ver no GitHub</a></li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <h2 class="section-title"><i class="fas fa-graduation-cap"></i>Formação Acadêmica</h2>
+    <ul>
+      <li><strong>Ensino Médio:</strong> Colégio Marista de Natal</li>
+      <li><strong>Graduação:</strong> Ciência da Computação - Universidade Potiguar (UNP) — desde 2024 (cursando)</li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <h2 class="section-title"><i class="fas fa-certificate"></i>Certificações</h2>
+    <ul>
+      <li>SOFTEX Pernambuco Formação Acelerada - UFRN</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Anna Schmidt | <a href="#top">Voltar ao topo</a></p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach((section, index) => {
+      section.style.transitionDelay = `${index * 0.2}s`;
+      observer.observe(section);
+    });
+
+    window.addEventListener('load', () => {
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top < window.innerHeight) {
+          setTimeout(() => section.classList.add("visible"), 100);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
