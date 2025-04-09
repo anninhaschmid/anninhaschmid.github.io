@@ -100,7 +100,6 @@
       font-size: 1.5rem;
     }
 
-    /* NOVO LAYOUT PADRONIZADO PARA TODAS AS SEÇÕES */
     .section-block {
       padding: 4rem 2rem;
       background-color: #ffffff;
@@ -141,6 +140,62 @@
       margin: 0.5rem 0;
       font-size: 1.2rem;
       color: #a883c9;
+    }
+
+    /* ======= RESPONSIVIDADE PARA SMARTPHONES ======= */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .intro {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1rem;
+      }
+
+      .intro-text {
+        max-width: 100%;
+      }
+
+      .intro-text h2 {
+        font-size: 2rem;
+      }
+
+      .intro-text p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        margin-top: 1rem;
+        margin-right: 0;
+      }
+
+      .social-icons {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .section-block {
+        padding: 2rem 1rem;
+      }
+
+      .section-block h2 {
+        font-size: 1.8rem;
+      }
+
+      .section-block p,
+      .skill-list li {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -200,5 +255,6 @@
   </section>
 </body>
 </html>
+
 
 
