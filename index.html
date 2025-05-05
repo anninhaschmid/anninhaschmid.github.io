@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfólio Web de Anna Schmidt</title>
 
   <meta name="description" content="Portfólio web de Anna Schmidt, Desenvolvedora Full Stack com foco em soluções front-end e back-end.">
   <meta name="author" content="Anna Schmidt">
   <meta name="robots" content="index, follow">
-
   <meta property="og:title" content="Portfólio Web de Anna Schmidt" />
   <meta property="og:description" content="Portfólio Profissional com foco em Desenvolvimento front-end, back-end e soluções em Python." />
   <meta property="og:type" content="website" />
@@ -23,59 +22,117 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      background-color: #fef6f0;
-      color: #333;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
+      background-color: #1e1e2f;
+      color: #e0e0e0;
     }
+
+    /* Tema claro */
+    body.light-mode {
+      background-color: #fef6f0;
+      color: #333;
+    }
+
+    body.light-mode header {
+      background-color: #fff0f5;
+    }
+
+    body.light-mode .intro {
+      background-color: #fcefee;
+    }
+
+    body.light-mode .section-block {
+      background-color: #ffffff;
+    }
+
+    body.light-mode nav a {
+      color: #555;
+    }
+
+    body.light-mode nav a:hover {
+      color: #a883c9;
+    }
+
+    body.light-mode .intro-text h2,
+    body.light-mode .section-block p {
+      color: #333;
+    }
+
+    body.light-mode .btn {
+      border-color: #a883c9;
+      color: #a883c9;
+    }
+
+    body.light-mode .btn:hover {
+      background-color: #a883c9;
+      color: #fff;
+    }
+
+    body.light-mode .skill-list li {
+      color: #a883c9;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 2rem;
-      background-color: #fff0f5;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background-color: #2c2c3a;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
+
     header h1 {
       font-size: 2rem;
       color: #a883c9;
     }
+
     nav {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
     }
+
     nav a {
-      color: #555;
+      color: #bbb;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s ease;
     }
+
     nav a:hover {
       color: #a883c9;
     }
+
     .intro {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 4rem 2rem;
-      background-color: #fcefee;
+      background-color: #2b2b38;
     }
+
     .intro-text {
       max-width: 50%;
     }
+
     .intro-text h2 {
       font-size: 3rem;
-      color: #222;
+      color: #e0e0e0;
     }
+
     .intro-text span {
       color: #a883c9;
     }
+
     .intro-text p {
       font-size: 1.2rem;
       margin: 1rem 0;
-      color: #444;
+      color: #ccc;
     }
+
     .btn {
       display: inline-block;
       background-color: transparent;
@@ -86,14 +143,18 @@
       font-weight: bold;
       text-decoration: none;
       margin-right: 1rem;
+      cursor: pointer;
     }
+
     .btn:hover {
       background-color: #a883c9;
       color: #fff;
     }
+
     .social-icons {
       margin-top: 1rem;
     }
+
     .social-icons a {
       color: #a883c9;
       margin-right: 1rem;
@@ -102,27 +163,32 @@
 
     .section-block {
       padding: 4rem 2rem;
-      background-color: #ffffff;
+      background-color: #252535;
     }
+
     .section-block h2 {
       font-size: 2.5rem;
       color: #a883c9;
       margin-bottom: 1rem;
     }
+
     .section-block p {
       font-size: 1.2rem;
-      color: #333;
+      color: #ccc;
       line-height: 1.6;
       max-width: 800px;
     }
+
     .section-block a {
       color: #a883c9;
       text-decoration: none;
       font-weight: bold;
     }
+
     .section-block a:hover {
       text-decoration: underline;
     }
+
     .project-list a {
       display: block;
       margin-top: 1rem;
@@ -130,19 +196,22 @@
       text-decoration: none;
       font-weight: bold;
     }
+
     .project-list a:hover {
       text-decoration: underline;
     }
+
     .skill-list {
       margin-top: 2rem;
     }
+
     .skill-list li {
       margin: 0.5rem 0;
       font-size: 1.2rem;
       color: #a883c9;
     }
 
-    /* ======= RESPONSIVIDADE PARA SMARTPHONES ======= */
+    /* RESPONSIVIDADE */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -207,7 +276,8 @@
       <a href="#projects">PROJETOS</a>
       <a href="#skills">HABILIDADES</a>
       <a href="#contact">CONTATO</a>
-      <a href="https://www.instagram.com/annaschmidt.dev/" class="btn" target="_blank">ME SIGA </a>
+      <a href="https://www.instagram.com/annaschmidt.dev/" class="btn" target="_blank">ME SIGA</a>
+      <button id="toggle-theme" class="btn">🌙 Tema</button>
     </nav>
   </header>
 
@@ -236,7 +306,7 @@
     <div class="project-list">
       <a href="https://github.com/anninhaschmid/anninhaschmid.github.io" target="_blank">🌐 Projeto: Meu site pessoal - GitHub Pages</a>
       <a href="https://github.com/anninhaschmid/FAP-MYSQL" target="_blank">🌐 Projeto: MYSQL - GitHub</a>
-      <a href="https://anninhaschmid.github.io/residencia.github.io/ target="_blank"> 🌐 Projeto: Sistema de Residencia - Github</a>
+      <a href="https://anninhaschmid.github.io/residencia.github.io/" target="_blank">🌐 Projeto: Sistema de Residência - Github</a>
     </div>
   </section>
 
@@ -246,7 +316,7 @@
       <li>💻 HTML, CSS e JavaScript</li>
       <li>⚙️ Versionamento com Git e GitHub</li>
       <li>🧠 Inteligência Artificial</li>
-      <li>👩‍💻Desenvolvimento Web</li>
+      <li>👩‍💻 Desenvolvimento Web</li>
     </ul>
   </section>
 
@@ -254,8 +324,34 @@
     <h2>CONTATO</h2>
     <p>Você pode entrar em contato comigo pelo e-mail: <a href="mailto:annamcshmidt@gmail.com">annamcshmidt@gmail.com</a></p>
   </section>
+
+  <script>
+    const toggleButton = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    function applySavedTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        toggleButton.textContent = '🌙 Tema';
+      } else {
+        body.classList.remove('light-mode');
+        toggleButton.textContent = '☀️ Tema';
+      }
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const isLight = body.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      toggleButton.textContent = isLight ? '🌙 Tema' : '☀️ Tema';
+    });
+
+    applySavedTheme();
+  </script>
 </body>
 </html>
+
 
 
 
