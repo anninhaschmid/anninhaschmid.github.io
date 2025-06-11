@@ -2,19 +2,19 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio Web de Anna Schmidt</title>
 
-  <meta name="description" content="Portfólio web de Anna Schmidt, Desenvolvedora Full Stack com foco em soluções front-end e back-end.">
-  <meta name="author" content="Anna Schmidt">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Portfólio web de Anna Schmidt, Desenvolvedora Full Stack com foco em soluções front-end e back-end." />
+  <meta name="author" content="Anna Schmidt" />
+  <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Portfólio Web de Anna Schmidt" />
   <meta property="og:description" content="Portfólio Profissional com foco em Desenvolvimento front-end, back-end e soluções em Python." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://anninhaschmid.github.io" />
 
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/732/732212.png" type="image/png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     * {
@@ -24,55 +24,10 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-      background-color: #1e1e2f;
-      color: #e0e0e0;
-    }
-
-    /* Tema claro */
-    body.light-mode {
       background-color: #fef6f0;
       color: #333;
-    }
-
-    body.light-mode header {
-      background-color: #fff0f5;
-    }
-
-    body.light-mode .intro {
-      background-color: #fcefee;
-    }
-
-    body.light-mode .section-block {
-      background-color: #ffffff;
-    }
-
-    body.light-mode nav a {
-      color: #555;
-    }
-
-    body.light-mode nav a:hover {
-      color: #a883c9;
-    }
-
-    body.light-mode .intro-text h2,
-    body.light-mode .section-block p {
-      color: #333;
-    }
-
-    body.light-mode .btn {
-      border-color: #a883c9;
-      color: #a883c9;
-    }
-
-    body.light-mode .btn:hover {
-      background-color: #a883c9;
-      color: #fff;
-    }
-
-    body.light-mode .skill-list li {
-      color: #a883c9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
     }
 
     header {
@@ -131,6 +86,7 @@
       font-size: 1.2rem;
       margin: 1rem 0;
       color: #ccc;
+      min-height: 1.5rem;
     }
 
     .btn {
@@ -144,11 +100,13 @@
       text-decoration: none;
       margin-right: 1rem;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .btn:hover {
       background-color: #a883c9;
       color: #fff;
+      transform: scale(1.05);
     }
 
     .social-icons {
@@ -211,7 +169,19 @@
       color: #a883c9;
     }
 
-    /* RESPONSIVIDADE */
+    /* Animações */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsividade */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -283,9 +253,9 @@
 
   <section class="intro">
     <div class="intro-text">
-      <h2>Olá Devs, meu nome é <br><strong>Anna <span>Schmidt</span></strong></h2>
-      <p>Eu sou desenvolvedora de Software junior</p>
-      <a href="http://lattes.cnpq.br/4136744838187145" class="btn" target="_blank">download cv</a>
+      <h2>Olá, meu nome é <br><strong>Anna <span>Schmidt</span></strong></h2>
+      <p></p>
+      <a href="http://lattes.cnpq.br/4136744838187145" class="btn" target="_blank">curriculo</a>
       <div class="social-icons">
         <a href="https://github.com/anninhaschmid" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/anna-schmidt-790b812b3/" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -294,38 +264,38 @@
     </div>
   </section>
 
-  <section id="about" class="section-block">
+  <section id="about" class="section-block reveal">
     <h2>SOBRE MIM</h2>
     <p>
-      Olá! Meu nome é Anna Schmidt, sou desenvolvedora full stack com foco em criar experiências digitais funcionais. Tenho especialização em HTML, CSS e JavaScript, com forte domínio em frameworks modernos para front-end e back-end. Trabalho com paixão no desenvolvimento de sites, aplicações web e interfaces, viso sempre buscar transformar ideias em projetos criativos. Também compartilho conteúdo sobre programação e tecnologia no meu Instagram @annaschmidt.dev.
+      Olá! Meu nome é Anna Schmidt, sou desenvolvedora Front-end com foco em criar experiências digitais funcionais. Tenho dominio em HTML, CSS, React e Python com forte domínio em frameworks modernos para front-end e back-end. Trabalho com paixão no desenvolvimento de sites, aplicações web e interfaces, viso sempre buscar transformar ideias em projetos criativos. Também compartilho conteúdo sobre programação e tecnologia no meu Instagram @annaschmidt.dev.
     </p>
   </section>
 
-  <section id="projects" class="section-block">
+  <section id="projects" class="section-block reveal">
     <h2>PROJETOS</h2>
     <div class="project-list">
       <a href="https://github.com/anninhaschmid/anninhaschmid.github.io" target="_blank">🌐 Projeto: Meu site pessoal - GitHub Pages</a>
       <a href="https://github.com/anninhaschmid/FAP-MYSQL" target="_blank">🌐 Projeto: MYSQL - GitHub</a>
-      <a href="https://anninhaschmid.github.io/residencia.github.io/" target="_blank">🌐 Projeto: Sistema de Residência - Github</a>
     </div>
   </section>
 
-  <section id="skills" class="section-block">
+  <section id="skills" class="section-block reveal">
     <h2>HABILIDADES</h2>
     <ul class="skill-list">
       <li>💻 HTML, CSS e JavaScript</li>
       <li>⚙️ Versionamento com Git e GitHub</li>
-      <li>🧠 Inteligência Artificial</li>
+      <li>🧠 React </li>
       <li>👩‍💻 Desenvolvimento Web</li>
     </ul>
   </section>
 
-  <section id="contact" class="section-block">
+  <section id="contact" class="section-block reveal">
     <h2>CONTATO</h2>
     <p>Você pode entrar em contato comigo pelo e-mail: <a href="mailto:annamcshmidt@gmail.com">annamcshmidt@gmail.com</a></p>
   </section>
 
   <script>
+    // Tema claro/escuro
     const toggleButton = document.getElementById('toggle-theme');
     const body = document.body;
 
@@ -333,10 +303,10 @@
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'light') {
         body.classList.add('light-mode');
-        toggleButton.textContent = '🌙 Tema';
+        toggleButton.textContent = '🌙 ';
       } else {
         body.classList.remove('light-mode');
-        toggleButton.textContent = '☀️ Tema';
+        toggleButton.textContent = '☀️';
       }
     }
 
@@ -344,13 +314,55 @@
       body.classList.toggle('light-mode');
       const isLight = body.classList.contains('light-mode');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      toggleButton.textContent = isLight ? '🌙 Tema' : '☀️ Tema';
+      toggleButton.textContent = isLight ? '🌙' : '☀️';
     });
 
     applySavedTheme();
+
+    // Scroll Reveal
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      for (const el of reveals) {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+          el.classList.add('active');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Efeito digitando
+    const introText = document.querySelector('.intro-text p');
+    const phrases = ["Eu sou desenvolvedora Front-end", "Apaixonada por tecnologia", "Criadora de soluções web"];
+    let i = 0, j = 0, isDeleting = false;
+
+    function type() {
+      const current = phrases[i];
+      if (isDeleting) {
+        introText.textContent = current.substring(0, j--);
+        if (j < 0) {
+          isDeleting = false;
+          i = (i + 1) % phrases.length;
+        }
+      } else {
+        introText.textContent = current.substring(0, j++);
+        if (j > current.length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+          return;
+        }
+      }
+      setTimeout(type, isDeleting ? 50 : 100);
+    }
+
+    type();
   </script>
 </body>
 </html>
+
 
 
 
