@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio Web de Anna Schmidt</title>
 
-  <meta name="description" content="Portfólio web de Anna Schmidt, Desenvolvedora Front-End com foco em soluções front-end." />
+  <meta name="description" content="Portfólio web de Anna Schmidt, Desenvolvedora Full Stack com foco em soluções front-end e back-end." />
   <meta name="author" content="Anna Schmidt" />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Portfólio Web de Anna Schmidt" />
   <meta property="og:description" content="Portfólio Profissional com foco em Desenvolvimento front-end, back-end e soluções em Python." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://anninhaschmid.github.io" />
+  <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/732/732212.png" />
 
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/732/732212.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -37,6 +38,7 @@
       padding: 2rem;
       background-color: #2c2c3a;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
     }
 
     header h1 {
@@ -61,6 +63,22 @@
       color: #a883c9;
     }
 
+    #toggle-theme {
+      background-color: transparent;
+      border: 2px solid #a883c9;
+      color: #a883c9;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #toggle-theme:hover {
+      background-color: #a883c9;
+      color: #fff;
+    }
+
     .intro {
       display: flex;
       justify-content: space-between;
@@ -82,7 +100,7 @@
       color: #a883c9;
     }
 
-    .intro-text p {
+    .intro-text p.typing {
       font-size: 1.2rem;
       margin: 1rem 0;
       color: #ccc;
@@ -169,7 +187,6 @@
       color: #a883c9;
     }
 
-    /* Animações */
     .reveal {
       opacity: 0;
       transform: translateY(50px);
@@ -181,7 +198,13 @@
       transform: translateY(0);
     }
 
-    /* Responsividade */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #2c2c3a;
+      color: #ccc;
+    }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -247,55 +270,61 @@
       <a href="#skills">HABILIDADES</a>
       <a href="#contact">CONTATO</a>
       <a href="https://www.instagram.com/annaschmidt.dev/" class="btn" target="_blank">ME SIGA</a>
-      <button id="toggle-theme" class="btn">🌙 Tema</button>
     </nav>
+    <button id="toggle-theme" aria-label="Alternar tema">🌙</button>
   </header>
 
-  <section class="intro">
-    <div class="intro-text">
-      <h2>Olá, meu nome é <br><strong>Anna <span>Schmidt</span></strong></h2>
-      <p></p>
-      <a href="http://lattes.cnpq.br/4136744838187145" class="btn" target="_blank">curriculo</a>
-      <div class="social-icons">
-        <a href="https://github.com/anninhaschmid" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/anna-schmidt-790b812b3/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/annaschmidt.dev/" target="_blank"><i class="fab fa-instagram"></i></a>
+  <main>
+    <section class="intro">
+      <div class="intro-text">
+        <h2>Olá, meu nome é <br><strong>Anna <span>Schmidt</span></strong></h2>
+        <p class="typing">Carregando mensagem...</p>
+        <a href="http://lattes.cnpq.br/4136744838187145" class="btn" target="_blank">Currículo</a>
+        <div class="social-icons">
+          <a href="https://github.com/anninhaschmid" target="_blank" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/anna-schmidt-790b812b3/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/annaschmidt.dev/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about" class="section-block reveal">
-    <h2>SOBRE MIM</h2>
-    <p>
-      Olá! Meu nome é Anna Schmidt, sou desenvolvedora Front-end com foco em criar experiências digitais funcionais. Tenho dominio em HTML, CSS, React e Python com forte domínio em frameworks modernos para front-end e back-end. Trabalho com paixão no desenvolvimento de sites, aplicações web e interfaces, viso sempre buscar transformar ideias em projetos criativos. Também compartilho conteúdo sobre programação e tecnologia no meu Instagram @annaschmidt.dev.
-    </p>
-  </section>
+    <section id="about" class="section-block reveal">
+      <h2>SOBRE MIM</h2>
+      <p>
+        Olá! Meu nome é Anna Schmidt, sou desenvolvedora Front-end com foco em criar experiências digitais funcionais. Tenho domínio forte em Java, HTML, CSS, React e Python com domínio em frameworks para front-end e back-end. Trabalho no desenvolvimento de sites, aplicações web e interfaces, viso sempre buscar transformar ideias em projetos criativos. Também compartilho conteúdo sobre programação e tecnologia no meu Instagram @annaschmidt.dev
+      </p>
+    </section>
 
-  <section id="projects" class="section-block reveal">
-    <h2>PROJETOS</h2>
-    <div class="project-list">
-      <a href="https://github.com/anninhaschmid/anninhaschmid.github.io" target="_blank">🌐 Projeto: Meu site pessoal - GitHub Pages</a>
-      <a href="https://github.com/anninhaschmid/FAP-MYSQL" target="_blank">🌐 Projeto: MYSQL - GitHub</a>
-    </div>
-  </section>
+    <section id="projects" class="section-block reveal">
+      <h2>PROJETOS</h2>
+      <div class="project-list">
+        <a href="https://github.com/anninhaschmid/anninhaschmid.github.io" target="_blank">🌐 Projeto: Meu site pessoal - GitHub Pages</a>
+        <a href="https://github.com/anninhaschmid/SKILLSWAP.github.io" target="_blank">🌐 SkillSwap - GitHub</a>
+        <a href="https://github.com/anninhaschmid/FAP-MYSQL" target="_blank">🌐 Projeto: MYSQL - GitHub</a>
+      </div>
+    </section>
 
-  <section id="skills" class="section-block reveal">
-    <h2>HABILIDADES</h2>
-    <ul class="skill-list">
-      <li>💻 HTML, CSS e JavaScript</li>
-      <li>⚙️ Versionamento com Git e GitHub</li>
-      <li>🧠 React </li>
-      <li>👩‍💻 Desenvolvimento Web</li>
-    </ul>
-  </section>
+    <section id="skills" class="section-block reveal">
+      <h2>HABILIDADES</h2>
+      <ul class="skill-list">
+        <li>💻 HTML, CSS e Java</li>
+        <li>⚙️ Versionamento com Git e GitHub</li>
+        <li>🧠 React</li>
+        <li>👩‍💻 Desenvolvimento Web</li>
+      </ul>
+    </section>
 
-  <section id="contact" class="section-block reveal">
-    <h2>CONTATO</h2>
-    <p>Você pode entrar em contato comigo pelo e-mail: <a href="mailto:annamcshmidt@gmail.com">annamcshmidt@gmail.com</a></p>
-  </section>
+    <section id="contact" class="section-block reveal">
+      <h2>CONTATO</h2>
+      <p>Você pode entrar em contato comigo pelo e-mail: <a href="mailto:annamcshmidt@gmail.com">annamcshmidt@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Anna Schmidt. Todos os direitos reservados.
+  </footer>
 
   <script>
-    // Tema claro/escuro
     const toggleButton = document.getElementById('toggle-theme');
     const body = document.body;
 
@@ -303,10 +332,7 @@
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'light') {
         body.classList.add('light-mode');
-        toggleButton.textContent = '🌙 ';
-      } else {
-        body.classList.remove('light-mode');
-        toggleButton.textContent = '☀️';
+        toggleButton.textContent = '🌙';
       }
     }
 
@@ -319,7 +345,6 @@
 
     applySavedTheme();
 
-    // Scroll Reveal
     function revealOnScroll() {
       const reveals = document.querySelectorAll('.reveal');
       for (const el of reveals) {
@@ -334,8 +359,7 @@
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
 
-    // Efeito digitando
-    const introText = document.querySelector('.intro-text p');
+    const introText = document.querySelector('.typing');
     const phrases = ["Eu sou desenvolvedora Front-end", "Apaixonada por tecnologia", "Criadora de soluções web"];
     let i = 0, j = 0, isDeleting = false;
 
@@ -362,7 +386,6 @@
   </script>
 </body>
 </html>
-
 
 
 
