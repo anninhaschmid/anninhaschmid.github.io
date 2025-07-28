@@ -1,393 +1,757 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio Web de Anna Schmidt</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anna Schmidt| Portfólio de Desenvolvedora</title>
 
-  <meta name="description" content="Portfólio web de Anna Schmidt, Desenvolvedora Front End com foco em soluções front-end e back-end." />
-  <meta name="author" content="Anna Schmidt" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Portfólio Web de Anna Schmidt" />
-  <meta property="og:description" content="Portfólio Profissional com foco em Desenvolvimento front-end, back-end e soluções em Python." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://anninhaschmid.github.io" />
-  <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/732/732212.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
 
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/732/732212.png" type="image/png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <style>
+        /* --- RESET & VARIÁVEIS GLOBAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    body {
-      background-color: #fef6f0;
-      color: #333;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-    }
+        :root {
+            --cor-primaria: #9b59b6;
+            --cor-primaria-escura: #8e44ad;
+            --cor-fundo: #000000;
+            --cor-fundo-secundaria: #1e1e1e;
+            --cor-texto: #ffffff;
+            --cor-texto-secundaria: #cccccc;
+            --sombra: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2rem;
-      background-color: #2c2c3a;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      flex-wrap: wrap;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    header h1 {
-      font-size: 2rem;
-      color: #a883c9;
-    }
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+        }
 
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    nav a {
-      color: #bbb;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+        section {
+            padding: 6rem 0;
+        }
 
-    nav a:hover {
-      color: #a883c9;
-    }
+        .titulo-secao {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
 
-    #toggle-theme {
-      background-color: transparent;
-      border: 2px solid #a883c9;
-      color: #a883c9;
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+        .titulo-secao::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--cor-primaria);
+            border-radius: 2px;
+        }
 
-    #toggle-theme:hover {
-      background-color: #a883c9;
-      color: #fff;
-    }
+        /* --- LINHA SEPARADORA --- */
+        .linha-secao {
+            border: none;
+            border-top: 1px solid var(--cor-primaria); /* Linha roxa de 1px */
+            margin: 4rem 0; /* Margem superior e inferior, sem centralização pois já ocupa 100% */
+            width: 100%; /* Largura da linha: 100% da tela */
+            opacity: 0.7; /* Transparência */
+        }
 
-    .intro {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4rem 2rem;
-      background-color: #2b2b38;
-    }
+        /* --- CABEÇALHO E NAVEGAÇÃO --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-    .intro-text {
-      max-width: 50%;
-    }
+        .header.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: var(--sombra);
+        }
 
-    .intro-text h2 {
-      font-size: 3rem;
-      color: #e0e0e0;
-    }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .intro-text span {
-      color: #a883c9;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            text-decoration: none;
+        }
 
-    .intro-text p.typing {
-      font-size: 1.2rem;
-      margin: 1rem 0;
-      color: #ccc;
-      min-height: 1.5rem;
-    }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
 
-    .btn {
-      display: inline-block;
-      background-color: transparent;
-      border: 2px solid #a883c9;
-      color: #a883c9;
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      margin-right: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+        .nav-links li {
+            margin-left: 2rem;
+        }
 
-    .btn:hover {
-      background-color: #a883c9;
-      color: #fff;
-      transform: scale(1.05);
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
 
-    .social-icons {
-      margin-top: 1rem;
-    }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--cor-primaria);
+            transition: width 0.3s ease;
+        }
 
-    .social-icons a {
-      color: #a883c9;
-      margin-right: 1rem;
-      font-size: 1.5rem;
-    }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--cor-primaria);
+        }
 
-    .section-block {
-      padding: 4rem 2rem;
-      background-color: #252535;
-    }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
 
-    .section-block h2 {
-      font-size: 2.5rem;
-      color: #a883c9;
-      margin-bottom: 1rem;
-    }
+        .menu-hamburguer {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
 
-    .section-block p {
-      font-size: 1.2rem;
-      color: #ccc;
-      line-height: 1.6;
-      max-width: 800px;
-    }
+        /* --- SEÇÃO INÍCIO --- */
+        #inicio {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .section-block a {
-      color: #a883c9;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .inicio-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            width: 100%;
+        }
 
-    .section-block a:hover {
-      text-decoration: underline;
-    }
+        .inicio-texto {
+            max-width: 600px;
+        }
 
-    .project-list a {
-      display: block;
-      margin-top: 1rem;
-      color: #a883c9;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .inicio-texto h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
 
-    .project-list a:hover {
-      text-decoration: underline;
-    }
+        .inicio-texto h1 {
+            font-size: 3.5rem;
+            margin: 0.5rem 0;
+        }
 
-    .skill-list {
-      margin-top: 2rem;
-    }
+        .inicio-texto h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            min-height: 2.5rem;
+        }
 
-    .skill-list li {
-      margin: 0.5rem 0;
-      font-size: 1.2rem;
-      color: #a883c9;
-    }
+        .inicio-texto h2 .typing-effect {
+            color: var(--cor-primaria);
+            font-weight: 700;
+        }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
+        .inicio-texto .btn-cv {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .redes-sociais {
+            margin-top: 1.5rem;
+        }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #2c2c3a;
-      color: #ccc;
-    }
+        .redes-sociais a {
+            color: var(--cor-texto);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-      }
+        .redes-sociais a:hover {
+            color: var(--cor-primaria);
+        }
 
-      nav {
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 1rem;
-      }
+        .btn-cv {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
 
-      .intro {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 2rem 1rem;
-      }
+        .btn-cv:hover {
+            background-color: var(--cor-primaria-escura);
+        }
 
-      .intro-text {
-        max-width: 100%;
-      }
+        .inicio-imagem img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--cor-primaria);
+            box-shadow: 0 0 30px var(--cor-primaria);
+        }
 
-      .intro-text h2 {
-        font-size: 2rem;
-      }
+        /* --- SEÇÃO SOBRE --- */
+        .sobre-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
 
-      .intro-text p {
-        font-size: 1rem;
-      }
+        .sobre-imagem img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
 
-      .btn {
-        margin-top: 1rem;
-        margin-right: 0;
-      }
+        .sobre-texto {
+            max-width: 700px;
+        }
 
-      .social-icons {
-        margin-top: 1rem;
-        font-size: 1.2rem;
-      }
+        .sobre-texto p {
+            line-height: 1.7;
+            color: var(--cor-texto-secundaria);
+            margin-bottom: 1rem;
+        }
 
-      .section-block {
-        padding: 2rem 1rem;
-      }
+        /* --- SEÇÃO PROJETOS --- */
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min-width ajustado */
+            gap: 1.5rem; /* Espaçamento menor */
+        }
 
-      .section-block h2 {
-        font-size: 1.8rem;
-      }
+        .projeto-card {
+            background-color: var(--cor-fundo-secundaria);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
 
-      .section-block p,
-      .skill-list li {
-        font-size: 1rem;
-      }
-    }
-  </style>
+        .projeto-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .projeto-card img {
+            width: 100%;
+            height: 150px; /* Altura da imagem reduzida */
+            object-fit: cover;
+        }
+
+        .projeto-info {
+            padding: 1rem; /* Preenchimento reduzido */
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .projeto-info h3 {
+            font-size: 1.2rem; /* Tamanho da fonte do título reduzido */
+            margin-bottom: 0.4rem;
+        }
+
+        .projeto-info p {
+            color: var(--cor-texto-secundaria);
+            font-size: 0.9rem; /* Tamanho da fonte do parágrafo reduzido */
+            margin-bottom: 0.8rem;
+            flex-grow: 1;
+        }
+
+        .projeto-links a {
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem; /* Tamanho da fonte dos links reduzido */
+            margin-right: 0.8rem;
+        }
+
+        .projeto-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- SEÇÃO HABILIDADES --- */
+        .section h1 {
+            text-align: center;
+            color: #9b59b6;
+            font-size: 2.6rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1.2px;
+        }
+
+        .habilidades-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .habilidades-icons div {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .habilidades-icons img {
+            width: 70px;
+            height: 70px;
+            transition: transform 0.3s ease;
+            background-color: transparent;
+            border-radius: 0;
+            padding: 0;
+        }
+
+        .habilidades-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        .habilidades-icons span {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--cor-texto-secundaria);
+        }
+
+        /* --- SEÇÃO CONTATO --- */
+        #contato .redes-sociais {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* Reduz a distância entre os ícones */
+            margin-top: 1.5rem; /* Ajusta a margem para subir um pouco */
+            margin-bottom: 2rem; /* Adiciona uma margem inferior para separar do rodapé */
+        }
+
+        #contato .redes-sociais a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px; /* Aumenta um pouco o tamanho do círculo */
+            height: 55px; /* Aumenta um pouco o tamanho do círculo */
+            border: 2px solid var(--cor-primaria);
+            border-radius: 50%;
+            font-size: 2.2rem; /* Aumenta o tamanho do ícone */
+            color: var(--cor-primaria);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Adiciona transição para o transform */
+        }
+
+        #contato .redes-sociais a:hover {
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto);
+            transform: translateY(-5px); /* Efeito de "subir" ao passar o mouse */
+            box-shadow: var(--sombra); /* Adiciona sombra ao passar o mouse */
+        }
+
+        /* --- RODAPÉ --- */
+        footer {
+            background-color: var(--cor-primaria-escura);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--cor-texto);
+        }
+
+        /* --- BOTÃO VOLTAR AO TOPO --- */
+        #btn-topo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #btn-topo.show {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 992px) {
+            .inicio-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .inicio-texto {
+                max-width: 100%;
+            }
+            .redes-sociais {
+                justify-content: center;
+            }
+            .sobre-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: var(--cor-fundo-secundaria);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease-in-out;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            .menu-hamburguer {
+                display: block;
+            }
+            .inicio-texto h1 {
+                font-size: 2.8rem;
+            }
+            .inicio-texto h2 {
+                font-size: 1.8rem;
+            }
+            .inicio-imagem img {
+                width: 280px;
+                height: 280px;
+            }
+            /* Removido o estilo aqui, pois agora está no estilo geral dos ícones de contato */
+            /* #contato .redes-sociais a {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            } */
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Portfolio</h1>
-    <nav>
-      <a href="#about">SOBRE MIM</a>
-      <a href="#projects">PROJETOS</a>
-      <a href="#skills">HABILIDADES</a>
-      <a href="#contact">CONTATO</a>
-      <a href="https://www.instagram.com/annaschmidt.dev/" class="btn" target="_blank">ME SIGA</a>
-    </nav>
-    <button id="toggle-theme" aria-label="Alternar tema">🌙</button>
-  </header>
-
-  <main>
-    <section class="intro">
-      <div class="intro-text">
-        <h2>Olá, meu nome é <br><strong>Anna <span>Schmidt</span></strong></h2>
-        <p class="typing">Carregando mensagem...</p>
-        <a href="http://lattes.cnpq.br/4136744838187145" class="btn" target="_blank">Currículo</a>
-        <div class="social-icons">
-          <a href="https://github.com/anninhaschmid" target="_blank" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-          <a href="https://www.linkedin.com/in/anna-schmidt-790b812b3/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-          <a href="https://www.instagram.com/annaschmidt.dev/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+    <header class="header">
+        <div class="container navbar">
+            <a href="#inicio" class="logo">annaschmidt.</a>
+            <ul class="nav-links">
+                <li><a href="#inicio" class="active">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="menu-hamburguer">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section id="about" class="section-block reveal">
-      <h2>SOBRE MIM</h2>
-      <p>
-        Olá! Meu nome é Anna Schmidt, sou desenvolvedora Front-end com foco em criar experiências digitais funcionais. Tenho domínio forte em Java, HTML, CSS, React e Python com domínio em frameworks para front-end e back-end. Trabalho no desenvolvimento de sites, aplicações web e interfaces, viso sempre buscar transformar ideias em projetos criativos. Também compartilho conteúdo sobre programação e tecnologia no meu Instagram @annaschmidt.dev
-      </p>
-    </section>
+    <main>
+        <section id="inicio">
+            <div class="container inicio-content">
+                <div class="inicio-texto">
+                    <h3>Olá, sou</h3>
+                    <h1>Anna Schmidt</h1>
+                    <h2>Desenvolvedora Front-End</h2>
+                    <a href="http://lattes.cnpq.br/4136744838187145" class="btn-cv" target="_blank">Download CV</a>
+                </div>
+                <div class="inicio-imagem">
+                    <img
+                        src="https://lh3.googleusercontent.com/gg/AAHar4d9LRv5VKTI1TlUCY7daxSEkWndpPwx9t_zYfWUhczCqalL_Qan5sB8Sq-sYlvSnU_s2aXArAfzPXaGTOe_faxvIWX2OX8usLVlJaDS_5gG05FuGqjnqjD9u5mbQuHP7Q1crXYh1lfjQCxQrCtzyseMEOiZybOhw1uLaegyPWaKVgOYeXq5PjCzLgm3gG-pFRFzE3MH5gB8-T89_Lq5qvn6Lr1sU1TSUAFljWDJwsUAvYRbU061sTpUPKIqT9EqO7ew05b9wXE9MkmtRzirZtqmUtsBtF2--Q=d"
+                        alt="Foto de Perfil de Anna Schmidt"
+                        onerror="this.onerror=null;this.src='https://placehold.co/350x350/9b59b6/ffffff?text=Ana+Schmid';"
+                    />
+                </div>
+            </div>
+        </section>
+        <hr class="linha-secao" />
 
-    <section id="projects" class="section-block reveal">
-      <h2>PROJETOS</h2>
-      <div class="project-list">
-        <a href="https://github.com/anninhaschmid/anninhaschmid.github.io" target="_blank">🌐 Projeto: Meu site pessoal - GitHub Pages</a>
-        <a href="https://github.com/anninhaschmid/SKILLSWAP.github.io" target="_blank">🌐 SkillSwap - GitHub</a>
-        <a href="https://github.com/anninhaschmid/FAP-MYSQL" target="_blank">🌐 Projeto: MYSQL - GitHub</a>
-      </div>
-    </section>
+        <section id="sobre">
+            <div class="container">
+                <h2 class="titulo-secao">Sobre Mim</h2>
+                <div class="sobre-content">
+                    <div class="sobre-imagem">
+                        <img
+                            src="https://placehold.co/300x400/9b59b6/121212?text=Sua+Foto"
+                            alt="Foto de Anna Schmidt"
+                        />
+                    </div>
+                    <div class="sobre-texto">
+                        <h3>Tenho 21 anos, sou estudante de Ciência da Computação e Desenvolvedora Front-End</h3>
+                        <p>
+                            Sou estudante de Ciência da Computação e Desenvolvedora Front-End apaixonada por criar soluções eficientes e robustas. Estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades e contribuir para projetos inovadores.
+                        </p>
+                        <p>
 
-    <section id="skills" class="section-block reveal">
-      <h2>HABILIDADES</h2>
-      <ul class="skill-list">
-        <li>💻 HTML, CSS e Java</li>
-        <li>⚙️ Versionamento com Git e GitHub</li>
-        <li>🧠 React</li>
-        <li>👩‍💻 Desenvolvimento Web</li>
-      </ul>
-    </section>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="linha-secao" />
 
-    <section id="contact" class="section-block reveal">
-      <h2>CONTATO</h2>
-      <p>Você pode entrar em contato comigo pelo e-mail: <a href="mailto:annamcshmidt@gmail.com">annamcshmidt@gmail.com</a></p>
-    </section>
-  </main>
+        <section id="projetos">
+            <div class="container">
+                <h2 class="titulo-secao">Projetos</h2>
+                <div class="projetos-grid">
+                    <div class="projeto-card">
+                        <img
+                            src="https://placehold.co/400x250/9b59b6/121212?text=SkillSwap"
+                            alt="Imagem do Projeto SkillSwap"
+                        />
+                        <div class="projeto-info">
+                            <h3>SkillSwap</h3>
+                            <p>
+                                Plataforma de troca de habilidades que conecta pessoas para compartilhar conhecimentos e aprender novas competências de forma colaborativa.
+                            </p>
+                            <div class="projeto-links">
+                                <a href="https://skillswap.mysoftwares.com.br" target="_blank"
+                                    >Visitar Site <i class="fa-solid fa-arrow-up-right-from-square"></i
+                                ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="projeto-card">
+                        <img
+                            src="https://placehold.co/400x250/8e44ad/121212?text=FAP-MYSQL"
+                            alt="Imagem do Projeto FAP-MYSQL"
+                        />
+                        <div class="projeto-info">
+                            <h3>FAP-MYSQL</h3>
+                            <p>
+                                Projeto de banco de dados MySQL para a disciplina de Fundamentos de Arquitetura de Computadores (FAP), focado em modelagem e implementação de esquemas de banco de dados.
+                            </p>
+                            <div class="projeto-links">
+                                <a href="https://github.com/anninhaschmid/FAP-MYSQL" target="_blank"
+                                    >Ver no GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i
+                                ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="linha-secao" />
 
-  <footer>
-    &copy; 2025 Anna Schmidt. Todos os direitos reservados.
-  </footer>
+        <section id="habilidades" class="section">
+            <h1>Habilidades</h1>
+            <div class="habilidades-icons">
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                        alt="HTML5"
+                        title="HTML5"
+                    />
+                    <span>HTML5</span>
+                </div>
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                        alt="CSS3"
+                        title="CSS3"
+                    />
+                    <span>CSS3</span>
+                </div>
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        alt="JavaScript"
+                        title="JavaScript"
+                    />
+                    <span>JavaScript</span>
+                </div>
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        alt="Python"
+                        title="Python"
+                    />
+                    <span>Python</span>
+                </div>
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                        alt="Java"
+                        title="Java"
+                    />
+                    <span>Java</span>
+                </div>
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                        alt="Figma"
+                        title="Figma"
+                    />
+                    <span>Figma</span>
+                </div>
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg"
+                        alt="Node.js"
+                        title="Node.js"
+                        />
+                    <span>Node.js</span>
+                </div>
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                        alt="React"
+                        title="React"
+                    />
+                    <span>React</span>
+                </div>
+                <div>
+                    <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                        alt="Git"
+                        title="Git"
+                    />
+                    <span>Git</span>
+                </div>
+            </div>
+        </section>
+        <hr class="linha-secao" />
 
-  <script>
-    const toggleButton = document.getElementById('toggle-theme');
-    const body = document.body;
+        <section id="contato">
+            <div class="container">
+                <h2 class="titulo-secao">Contato</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--cor-texto-secundaria);">
+                </p>
+                <div class="redes-sociais">
+                    <a href="https://www.linkedin.com/in/annaschmidt-dev" target="_blank" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/anninhaschmid" target="_blank" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/annaschmidt.dev/" target="_blank" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    function applySavedTheme() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
-        body.classList.add('light-mode');
-        toggleButton.textContent = '🌙';
-      }
-    }
+    <footer>
+        <p>© 2025 Anna Schmidt - Todos os direitos reservados.</p>
+    </footer>
 
-    toggleButton.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-      const isLight = body.classList.contains('light-mode');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      toggleButton.textContent = isLight ? '🌙' : '☀️';
-    });
+    <button id="btn-topo" title="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
-    applySavedTheme();
+    <script>
+        // Menu hamburguer
+        const menuHamburguer = document.querySelector('.menu-hamburguer');
+        const navLinks = document.querySelector('.nav-links');
 
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      for (const el of reveals) {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
-          el.classList.add('active');
-        }
-      }
-    }
+        menuHamburguer.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuHamburguer.querySelector('i').classList.toggle('fa-bars');
+            menuHamburguer.querySelector('i').classList.toggle('fa-xmark');
+        });
 
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
+        // Scroll para adicionar sombra ao header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
 
-    const introText = document.querySelector('.typing');
-    const phrases = ["Eu sou desenvolvedora Front-end", "Apaixonada por tecnologia", "Criadora de soluções web"];
-    let i = 0, j = 0, isDeleting = false;
+            // Mostrar botão voltar ao topo
+            const btnTopo = document.getElementById('btn-topo');
+            if (window.scrollY > 300) {
+                btnTopo.classList.add('show');
+            } else {
+                btnTopo.classList.remove('show');
+            }
+        });
 
-    function type() {
-      const current = phrases[i];
-      if (isDeleting) {
-        introText.textContent = current.substring(0, j--);
-        if (j < 0) {
-          isDeleting = false;
-          i = (i + 1) % phrases.length;
-        }
-      } else {
-        introText.textContent = current.substring(0, j++);
-        if (j > current.length) {
-          isDeleting = true;
-          setTimeout(type, 1000);
-          return;
-        }
-      }
-      setTimeout(type, isDeleting ? 50 : 100);
-    }
+        // Scroll para topo ao clicar no botão
+        document.getElementById('btn-topo').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-    type();
-  </script>
+        // Removendo o efeito de digitação
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingElement = document.querySelector(".typing-effect");
+            if (typingElement) {
+                typingElement.textContent = "Desenvolvedora Front-End"; // Define o texto fixo
+            }
+        });
+    </script>
 </body>
 </html>
-
-
 
 
 
