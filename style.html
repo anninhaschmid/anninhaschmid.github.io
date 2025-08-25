@@ -1,4 +1,4 @@
- /* --- RESET & VARIÁVEIS GLOBAIS --- */
+/* --- RESET & VARIÁVEIS GLOBAIS --- */
         * {
             margin: 0;
             padding: 0;
@@ -9,7 +9,7 @@
         :root {
             --cor-primaria: #9b59b6;
             --cor-primaria-escura: #8e44ad;
-            --cor-fundo: #000000; /* Alterado para preto */
+            --cor-fundo: #000000;
             --cor-fundo-secundaria: #1e1e1e;
             --cor-texto: #ffffff;
             --cor-texto-secundaria: #cccccc;
@@ -54,6 +54,15 @@
             border-radius: 2px;
         }
 
+        /* --- LINHA SEPARADORA --- */
+        .linha-secao {
+            border: none;
+            border-top: 1px solid var(--cor-primaria); /* Linha roxa de 1px */
+            margin: 4rem 0; /* Margem superior e inferior, sem centralização pois já ocupa 100% */
+            width: 100%; /* Largura da linha: 100% da tela */
+            opacity: 0.7; /* Transparência */
+        }
+
         /* --- CABEÇALHO E NAVEGAÇÃO --- */
         .header {
             position: fixed;
@@ -61,7 +70,7 @@
             left: 0;
             width: 100%;
             padding: 1rem 0;
-            background-color: rgba(0, 0, 0, 0.8); /* Ajustado para preto */
+            background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
@@ -169,27 +178,45 @@
             color: var(--cor-primaria);
             font-weight: 700;
         }
-
-        /* Ajustes para a nova posição do botão CV */
-        .inicio-texto .btn-cv {
-            margin-top: 1rem;
-            margin-bottom: 2rem; /* Adicionado espaço abaixo do botão para separar das redes sociais caso elas voltem aqui */
+        /* EFEITO DE FLUTUAR NA IMAGEM */
+        .flutuar {
+            animation: subirDescer 2s ease-in-out infinite;
         }
 
+        @keyframes subirDescer {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .inicio-texto .btn-cv {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Regras gerais para .redes-sociais (usado em Início e Contato) */
         .redes-sociais {
-            margin-top: 1.5rem;
-            /* Esta regra pode ser ajustada ou removida se os ícones sociais não voltarem para aqui */
+            margin-top: 1.5rem; /* Margem para separar do conteúdo acima */
+            display: flex;
+            justify-content: center; /* Centraliza os ícones */
+            gap: 1.5rem; /* Espaçamento entre os ícones */
         }
 
         .redes-sociais a {
             color: var(--cor-texto);
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            transition: color 0.3s ease;
+            font-size: 1.5rem; /* Tamanho dos ícones nas redes sociais do Início */
+            transition: color 0.3s ease, transform 0.3s ease; /* Adiciona transição para o transform */
         }
 
         .redes-sociais a:hover {
             color: var(--cor-primaria);
+            transform: translateY(-3px); /* Pequeno efeito de subir ao passar o mouse */
         }
 
         .btn-cv {
@@ -242,8 +269,8 @@
         /* --- SEÇÃO PROJETOS --- */
         .projetos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min-width ajustado */
+            gap: 1.5rem; /* Espaçamento menor */
         }
 
         .projeto-card {
@@ -262,25 +289,26 @@
 
         .projeto-card img {
             width: 100%;
-            height: 200px;
+            height: 150px; /* Altura da imagem reduzida */
             object-fit: cover;
         }
 
         .projeto-info {
-            padding: 1.5rem;
+            padding: 1rem; /* Preenchimento reduzido */
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .projeto-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem; /* Tamanho da fonte do título reduzido */
+            margin-bottom: 0.4rem;
         }
 
         .projeto-info p {
             color: var(--cor-texto-secundaria);
-            margin-bottom: 1rem;
+            font-size: 0.9rem; /* Tamanho da fonte do parágrafo reduzido */
+            margin-bottom: 0.8rem;
             flex-grow: 1;
         }
 
@@ -288,9 +316,10 @@
             color: var(--cor-primaria);
             text-decoration: none;
             font-weight: 600;
-            margin-right: 1rem;
+            font-size: 0.9rem; /* Tamanho da fonte dos links reduzido */
+            margin-right: 0.8rem;
         }
-        
+
         .projeto-links a:hover {
             text-decoration: underline;
         }
@@ -298,7 +327,7 @@
         /* --- SEÇÃO HABILIDADES --- */
         .section h1 {
             text-align: center;
-            color: #9b59b6; /* roxo */
+            color: #9b59b6;
             font-size: 2.6rem;
             margin-bottom: 2.5rem;
             letter-spacing: 1.2px;
@@ -322,20 +351,17 @@
             align-items: center;
         }
 
-        /* Removido o filtro de grayscale padrão para que os ícones apareçam coloridos */
         .habilidades-icons img {
             width: 70px;
             height: 70px;
-            transition: transform 0.3s ease, filter 0.3s ease; /* Mantido o filter para a transição do hover */
+            transition: transform 0.3s ease;
             background-color: transparent;
             border-radius: 0;
             padding: 0;
-            /* filter: grayscale(100%) brightness(0) invert(42%) sepia(62%) saturate(489%) hue-rotate(251deg) brightness(90%) contrast(85%); REMOVIDO */
         }
 
         .habilidades-icons img:hover {
             transform: scale(1.2);
-            filter: none; /* Mantido o filter: none; para garantir que não haja filtros ao passar o mouse */
         }
 
         .habilidades-icons span {
@@ -345,35 +371,41 @@
         }
 
         /* --- SEÇÃO CONTATO --- */
+        #contato .redes-sociais {
+            /* Já definido nas regras gerais .redes-sociais */
+            margin-top: 1.5rem; /* Ajusta a margem para subir um pouco */
+            margin-bottom: 2rem; /* Adiciona uma margem inferior para separar do rodapé */
+        }
+
         #contato .redes-sociais a {
-            display: inline-flex; /* Para aplicar padding e border corretamente */
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px; /* Tamanho menor do círculo para os ícones */
-            height: 50px; /* Tamanho menor do círculo para os ícones */
-            border: 2px solid var(--cor-primaria); /* Borda roxa */
-            border-radius: 50%; /* Transforma em círculo */
-            margin: 0 0.6rem; /* Espaçamento menor entre os ícones */
-            font-size: 2rem; /* Tamanho menor dos ícones */
-            color: var(--cor-primaria); /* Cor do ícone roxo */
-            transition: background-color 0.3s ease, color 0.3s ease;
+            width: 55px; /* Aumenta um pouco o tamanho do círculo */
+            height: 55px; /* Aumenta um pouco o tamanho do círculo */
+            border: 2px solid var(--cor-primaria);
+            border-radius: 50%;
+            font-size: 2.2rem; /* Aumenta o tamanho do ícone */
+            color: var(--cor-primaria);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Adiciona transição para o transform */
         }
 
         #contato .redes-sociais a:hover {
-            background-color: var(--cor-primaria); /* Fundo roxo ao passar o mouse */
-            color: var(--cor-texto); /* Cor do ícone branca ao passar o mouse */
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto);
+            transform: translateY(-5px); /* Efeito de "subir" ao passar o mouse */
+            box-shadow: var(--sombra); /* Adiciona sombra ao passar o mouse */
         }
-
 
         /* --- RODAPÉ --- */
         footer {
-            background-color: var(--cor-primaria-escura); /* Alterado para roxo escuro */
+            background-color: var(--cor-primaria-escura);
             padding: 2rem 0;
             text-align: center;
         }
 
         footer p {
-            color: var(--cor-texto); /* Mantido branco para contraste */
+            color: var(--cor-texto);
         }
 
         /* --- BOTÃO VOLTAR AO TOPO --- */
@@ -403,44 +435,50 @@
         }
 
         /* --- RESPONSIVIDADE --- */
+        /* Ajustes para telas até 992px (desktops menores, tablets maiores) */
         @media (max-width: 992px) {
             .inicio-content {
-                flex-direction: column-reverse;
+                flex-direction: column-reverse; /* Inverte a ordem do texto e imagem */
                 text-align: center;
             }
             .inicio-texto {
                 max-width: 100%;
             }
-            .redes-sociais {
-                justify-content: center;
-            }
+            /* .redes-sociais já centralizado */
             .sobre-content {
-                flex-direction: column;
+                flex-direction: column; /* Imagem e texto empilhados */
                 text-align: center;
+                gap: 2rem; /* Reduz o espaço entre a imagem e o texto */
+            }
+            .sobre-imagem img {
+                width: 70%; /* Imagem Sobre ocupa mais largura em telas médias */
+                max-width: 300px;
             }
         }
 
+        /* Ajustes para telas até 768px (tablets e celulares grandes) */
         @media (max-width: 768px) {
             .nav-links {
                 position: absolute;
                 top: 100%;
-                right: -100%;
+                right: -100%; /* Esconde o menu fora da tela */
                 width: 100%;
-                height: calc(100vh - 60px);
+                height: calc(100vh - 60px); /* Altura total da tela menos o header */
                 background-color: var(--cor-fundo-secundaria);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 transition: right 0.3s ease-in-out;
+                z-index: 990; /* Abaixo do header */
             }
             .nav-links.active {
-                right: 0;
+                right: 0; /* Mostra o menu */
             }
             .nav-links li {
-                margin: 1.5rem 0;
+                margin: 1.5rem 0; /* Espaçamento entre os itens do menu */
             }
             .menu-hamburguer {
-                display: block;
+                display: block; /* Mostra o ícone do hamburguer */
             }
             .inicio-texto h1 {
                 font-size: 2.8rem;
@@ -452,27 +490,75 @@
                 width: 280px;
                 height: 280px;
             }
-            #contato .redes-sociais a {
-                width: 50px; /* Mantido igual ao desktop */
-                height: 50px; /* Mantido igual ao desktop */
-                font-size: 2rem; /* Mantido igual ao desktop */
-            }
         }
-    
+
+        /* NOVOS Ajustes para telas até 576px (celulares menores) */
         @media (max-width: 576px) {
-            .inicio-texto h1 {
-                font-size: 2.5rem;
+            html {
+                font-size: 14px; /* Reduz a fonte base para telas menores */
             }
-            .inicio-texto h2 {
-                font-size: 1.5rem;
+
+            section {
+                padding: 4rem 0; /* Reduz o padding vertical das seções */
             }
+
+            .container {
+                padding: 0 1rem; /* Reduz o padding horizontal do container */
+            }
+
+            .titulo-secao {
+                font-size: 2rem; /* Reduz o tamanho do título das seções */
+                margin-bottom: 2rem;
+            }
+
             .inicio-imagem img {
-                width: 250px;
-                height: 250px;
+                width: 220px;
+                height: 220px;
             }
+
+            .sobre-imagem img {
+                width: 80%; /* A imagem Sobre ocupa mais largura em telas muito pequenas */
+                max-width: 200px; /* Garante que não fique muito grande */
+                margin-bottom: 1rem; /* Adiciona margem abaixo da imagem Sobre quando empilhada */
+            }
+
+            .projetos-grid {
+                grid-template-columns: 1fr; /* Força uma única coluna para os projetos */
+            }
+
+            .habilidades-icons {
+                gap: 1rem; /* Reduz o espaço entre os ícones de habilidades */
+            }
+
             .habilidades-icons img {
-                width: 60px; /* Tamanho menor dos ícones */
-                height: 60px; /* Tamanho menor dos ícones */
+                width: 50px;
+                height: 50px;
             }
+            .habilidades-icons span {
+                font-size: 0.8rem; /* Reduz o tamanho do texto das habilidades */
+            }
+
+            #contato .redes-sociais a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.8rem;
+                gap: 1rem; /* Diminui o gap para caber melhor */
+            }
+            /* ... other styles for desktop ... */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem; /* Reduz o padding horizontal do container */
+    }
+
+    /* ... all the other rules you selected ... */
+
+    #contato .redes-sociais a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+        gap: 1rem; /* Diminui o gap para caber melhor */
+    }
+}
         }
-  
+   
