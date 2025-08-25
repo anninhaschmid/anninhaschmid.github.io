@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Anna Schmidt| Portfólio de Desenvolvedora</title>
+    <title>Anna Schmidt | Portfólio de Desenvolvedora</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -200,25 +200,45 @@
             color: var(--cor-primaria);
             font-weight: 700;
         }
+        /* EFEITO DE FLUTUAR NA IMAGEM */
+        .flutuar {
+            animation: subirDescer 2s ease-in-out infinite;
+        }
+
+        @keyframes subirDescer {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
 
         .inicio-texto .btn-cv {
             margin-top: 1rem;
             margin-bottom: 2rem;
         }
 
+        /* Regras gerais para .redes-sociais (usado em Início e Contato) */
         .redes-sociais {
-            margin-top: 1.5rem;
+            margin-top: 1.5rem; /* Margem para separar do conteúdo acima */
+            display: flex;
+            justify-content: center; /* Centraliza os ícones */
+            gap: 1.5rem; /* Espaçamento entre os ícones */
         }
 
         .redes-sociais a {
             color: var(--cor-texto);
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            transition: color 0.3s ease;
+            font-size: 1.5rem; /* Tamanho dos ícones nas redes sociais do Início */
+            transition: color 0.3s ease, transform 0.3s ease; /* Adiciona transição para o transform */
         }
 
         .redes-sociais a:hover {
             color: var(--cor-primaria);
+            transform: translateY(-3px); /* Pequeno efeito de subir ao passar o mouse */
         }
 
         .btn-cv {
@@ -374,9 +394,7 @@
 
         /* --- SEÇÃO CONTATO --- */
         #contato .redes-sociais {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem; /* Reduz a distância entre os ícones */
+            /* Já definido nas regras gerais .redes-sociais */
             margin-top: 1.5rem; /* Ajusta a margem para subir um pouco */
             margin-bottom: 2rem; /* Adiciona uma margem inferior para separar do rodapé */
         }
@@ -439,44 +457,50 @@
         }
 
         /* --- RESPONSIVIDADE --- */
+        /* Ajustes para telas até 992px (desktops menores, tablets maiores) */
         @media (max-width: 992px) {
             .inicio-content {
-                flex-direction: column-reverse;
+                flex-direction: column-reverse; /* Inverte a ordem do texto e imagem */
                 text-align: center;
             }
             .inicio-texto {
                 max-width: 100%;
             }
-            .redes-sociais {
-                justify-content: center;
-            }
+            /* .redes-sociais já centralizado */
             .sobre-content {
-                flex-direction: column;
+                flex-direction: column; /* Imagem e texto empilhados */
                 text-align: center;
+                gap: 2rem; /* Reduz o espaço entre a imagem e o texto */
+            }
+            .sobre-imagem img {
+                width: 70%; /* Imagem Sobre ocupa mais largura em telas médias */
+                max-width: 300px;
             }
         }
 
+        /* Ajustes para telas até 768px (tablets e celulares grandes) */
         @media (max-width: 768px) {
             .nav-links {
                 position: absolute;
                 top: 100%;
-                right: -100%;
+                right: -100%; /* Esconde o menu fora da tela */
                 width: 100%;
-                height: calc(100vh - 60px);
+                height: calc(100vh - 60px); /* Altura total da tela menos o header */
                 background-color: var(--cor-fundo-secundaria);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 transition: right 0.3s ease-in-out;
+                z-index: 990; /* Abaixo do header */
             }
             .nav-links.active {
-                right: 0;
+                right: 0; /* Mostra o menu */
             }
             .nav-links li {
-                margin: 1.5rem 0;
+                margin: 1.5rem 0; /* Espaçamento entre os itens do menu */
             }
             .menu-hamburguer {
-                display: block;
+                display: block; /* Mostra o ícone do hamburguer */
             }
             .inicio-texto h1 {
                 font-size: 2.8rem;
@@ -488,12 +512,60 @@
                 width: 280px;
                 height: 280px;
             }
-            /* Removido o estilo aqui, pois agora está no estilo geral dos ícones de contato */
-            /* #contato .redes-sociais a {
+        }
+
+        /* NOVOS Ajustes para telas até 576px (celulares menores) */
+        @media (max-width: 576px) {
+            html {
+                font-size: 14px; /* Reduz a fonte base para telas menores */
+            }
+
+            section {
+                padding: 4rem 0; /* Reduz o padding vertical das seções */
+            }
+
+            .container {
+                padding: 0 1rem; /* Reduz o padding horizontal do container */
+            }
+
+            .titulo-secao {
+                font-size: 2rem; /* Reduz o tamanho do título das seções */
+                margin-bottom: 2rem;
+            }
+
+            .inicio-imagem img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .sobre-imagem img {
+                width: 80%; /* A imagem Sobre ocupa mais largura em telas muito pequenas */
+                max-width: 200px; /* Garante que não fique muito grande */
+                margin-bottom: 1rem; /* Adiciona margem abaixo da imagem Sobre quando empilhada */
+            }
+
+            .projetos-grid {
+                grid-template-columns: 1fr; /* Força uma única coluna para os projetos */
+            }
+
+            .habilidades-icons {
+                gap: 1rem; /* Reduz o espaço entre os ícones de habilidades */
+            }
+
+            .habilidades-icons img {
                 width: 50px;
                 height: 50px;
-                font-size: 2rem;
-            } */
+            }
+            .habilidades-icons span {
+                font-size: 0.8rem; /* Reduz o tamanho do texto das habilidades */
+            }
+
+            #contato .redes-sociais a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.8rem;
+                gap: 1rem; /* Diminui o gap para caber melhor */
+            }
         }
     </style>
 </head>
@@ -520,14 +592,14 @@
                 <div class="inicio-texto">
                     <h3>Olá, sou</h3>
                     <h1>Anna Schmidt</h1>
-                    <h2>Desenvolvedora Front-End</h2>
-                    <a href="http://lattes.cnpq.br/4136744838187145" class="btn-cv" target="_blank">Download CV</a>
+                    <h2><span class="typing-effect"></span></h2>
+                    <a href="https://1drv.ms/w/c/dcf30a31248caac9/Eb-5r6h0oXhCu5Glmfv4H3ABu2ggc9xTyxn_9x4YRKZGKQ?e=dGmF66" class="btn-cv" target="_blank">Download CV</a>
                 </div>
                 <div class="inicio-imagem">
                     <img
-                        src="https://lh3.googleusercontent.com/gg/AAHar4d9LRv5VKTI1TlUCY7daxSEkWndpPwx9t_zYfWUhczCqalL_Qan5sB8Sq-sYlvSnU_s2aXArAfzPXaGTOe_faxvIWX2OX8usLVlJaDS_5gG05FuGqjnqjD9u5mbQuHP7Q1crXYh1lfjQCxQrCtzyseMEOiZybOhw1uLaegyPWaKVgOYeXq5PjCzLgm3gG-pFRFzE3MH5gB8-T89_Lq5qvn6Lr1sU1TSUAFljWDJwsUAvYRbU061sTpUPKIqT9EqO7ew05b9wXE9MkmtRzirZtqmUtsBtF2--Q=d"
-                        alt="Foto de Perfil de Anna Schmidt"
-                        onerror="this.onerror=null;this.src='https://placehold.co/350x350/9b59b6/ffffff?text=Ana+Schmid';"
+                        src="img/anna-schmidt.jpg"
+                        alt="Foto de formatura de Anna Schmidt"
+                        class="flutuar"
                     />
                 </div>
             </div>
@@ -540,17 +612,17 @@
                 <div class="sobre-content">
                     <div class="sobre-imagem">
                         <img
-                            src="https://placehold.co/300x400/9b59b6/121212?text=Sua+Foto"
+                            src="img/foto-sobre.jpg"
                             alt="Foto de Anna Schmidt"
                         />
                     </div>
                     <div class="sobre-texto">
-                        <h3>Tenho 21 anos, sou estudante de Ciência da Computação e Desenvolvedora Front-End</h3>
+                        <h3>Olá! Meu nome é Anna Schmidt, tenho 21 anos.
+Sou apaixonada por programação e criação de soluções que fazem a diferença. Estou em constante evolução, estudando e desenvolvendo projetos práticos para aprimorar minhas habilidades nas tecnologias atuais do mercado.
+Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender com profissionais da área e contribuir com meu comprometimento, criatividade e vontade de crescer. Acredito que a tecnologia tem o poder de transformar o mundo, e quero fazer parte dessa transformação.
                         <p>
-                            Sou estudante de Ciência da Computação e Desenvolvedora Front-End apaixonada por criar soluções eficientes e robustas. Estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades e contribuir para projetos inovadores.
                         </p>
                         <p>
-
                         </p>
                     </div>
                 </div>
@@ -568,7 +640,7 @@
                             alt="Imagem do Projeto SkillSwap"
                         />
                         <div class="projeto-info">
-                            <h3>SkillSwap</h3>
+                            <h3>Troca de Habilidades</h3>
                             <p>
                                 Plataforma de troca de habilidades que conecta pessoas para compartilhar conhecimentos e aprender novas competências de forma colaborativa.
                             </p>
@@ -585,7 +657,7 @@
                             alt="Imagem do Projeto FAP-MYSQL"
                         />
                         <div class="projeto-info">
-                            <h3>FAP-MYSQL</h3>
+                            <h3>Banco de Dados</h3>
                             <p>
                                 Projeto de banco de dados MySQL para a disciplina de Fundamentos de Arquitetura de Computadores (FAP), focado em modelagem e implementação de esquemas de banco de dados.
                             </p>
@@ -657,7 +729,7 @@
                         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg"
                         alt="Node.js"
                         title="Node.js"
-                        />
+                    />
                     <span>Node.js</span>
                 </div>
                 <div>
@@ -684,15 +756,16 @@
             <div class="container">
                 <h2 class="titulo-secao">Contato</h2>
                 <p style="text-align: center; font-size: 1.2rem; color: var(--cor-texto-secundaria);">
+                    
                 </p>
                 <div class="redes-sociais">
-                    <a href="https://www.linkedin.com/in/annaschmidt-dev" target="_blank" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/annaschmidt-dev" target="_blank" title="LinkedIn" aria-label="LinkedIn de Anna Schmidt">
                         <i class="fa-brands fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/anninhaschmid" target="_blank" title="GitHub">
+                    <a href="https://github.com/anninhaschmid" target="_blank" title="GitHub" aria-label="GitHub de Anna Schmidt">
                         <i class="fa-brands fa-github"></i>
                     </a>
-                    <a href="https://www.instagram.com/annaschmidt.dev/" target="_blank" title="Instagram">
+                    <a href="https://www.instagram.com/annaschmidt.dev/" target="_blank" title="Instagram" aria-label="Instagram de Anna Schmidt">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
@@ -709,6 +782,35 @@
     </button>
 
     <script>
+        // Efeito de digitação com múltiplas frases
+        const typingElement = document.querySelector(".typing-effect");
+        const phrases = ["Desenvolvedora Front-End", "Criadora de Interfaces", "Apaixonada por UX/UI"];
+        let currentPhraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[currentPhraseIndex];
+            const currentText = currentPhrase.substring(0, charIndex);
+            typingElement.textContent = currentText;
+
+            if (!isDeleting && charIndex < currentPhrase.length) {
+                charIndex++;
+                setTimeout(type, 100);
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+                setTimeout(type, 50);
+            } else {
+                isDeleting = !isDeleting;
+                currentPhraseIndex = !isDeleting ? (currentPhraseIndex + 1) % phrases.length : currentPhraseIndex;
+                setTimeout(type, 1000);
+            }
+        }
+
+        if (typingElement) {
+            type();
+        }
+
         // Menu hamburguer
         const menuHamburguer = document.querySelector('.menu-hamburguer');
         const navLinks = document.querySelector('.nav-links');
@@ -740,14 +842,6 @@
         // Scroll para topo ao clicar no botão
         document.getElementById('btn-topo').addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Removendo o efeito de digitação
-        document.addEventListener("DOMContentLoaded", () => {
-            const typingElement = document.querySelector(".typing-effect");
-            if (typingElement) {
-                typingElement.textContent = "Desenvolvedora Front-End"; // Define o texto fixo
-            }
         });
     </script>
 </body>
