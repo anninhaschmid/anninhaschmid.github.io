@@ -844,8 +844,78 @@ Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
+    
+</script>
+<!-- Música de Fundo -->
+<audio id="musicaFundo" autoplay loop>
+  <source src="music.´m´3.mp3" type="audio/mp3">
+  Seu navegador não suporta áudio HTML5.
+</audio>
+
+<!-- Estilo do Botão -->
+<style>
+  #btn-musica {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: #9b59b6;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+  }
+
+  #btn-musica:hover {
+    background-color: #8e44ad;
+  }
+</style>
+
+<!-- Script para Controle do Áudio -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const musica = document.getElementById('musicaFundo');
+    const btnMusica = document.getElementById('btn-musica');
+    let tocando = true;
+
+    musica.volume = 0.2; // Volume suave
+
+    // Tenta iniciar automaticamente
+    musica.play().then(() => {
+      // Autoplay funcionou, mantém o botão oculto
+    }).catch(() => {
+      // Autoplay foi bloqueado, exibe o botão
+      btnMusica.style.display = 'block';
+      tocando = false;
+    });
+
+    // Controle do botão
+    btnMusica.addEventListener('click', () => {
+      if (tocando) {
+        musica.pause();
+        btnMusica.textContent = "Ativar Música";
+        tocando = false;
+        btnMusica.style.display = 'block';
+      } else {
+        musica.play().then(() => {
+          btnMusica.textContent = "Pausar Música";
+          tocando = true;
+          btnMusica.style.display = 'none';
+        }).catch(() => {
+          console.warn("Erro ao tentar tocar a música.");
+        });
+      }
+    });
+  });
+</script>
+
 </body>
-</html>
+
 
 
 
