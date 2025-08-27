@@ -918,51 +918,9 @@ Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender 
   <source src="musica.mp3" type="audio/mp3">
   Seu navegador não suporta áudio HTML5.
 </audio>
-
-<!-- Estilo do Botão -->
-<style>
-  #btn-musica {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    background-color: #9b59b6;
-    color: #ffffff;
-    border: none;
-    border-radius: 30px;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-  }
-
-  #btn-musica:hover {
-    background-color: #8e44ad;
-  }
-</style>
-
-</script>
-<audio autoplay loop>
-  <source src="music.´m´3.mp3" type="audio/mp3">
-</audio>
-<audio id="musicaFundo" autoplay loop muted>
-  <source src="music.´m´3.mp3" type="audio/mp3">
-</audio>
-
-<script>
-  const musica = document.getElementById('musicaFundo');
-  musica.volume = 0.3; // volume baixo
-
-  // Quando o usuário interagir, ativa o som
-  document.addEventListener('click', () => {
-    musica.muted = false;
-  }, { once: true });
-</script>
 <!-- Música de Fundo -->
 <audio id="musicaFundo" autoplay loop>
-  <source src="music.´m´3.mp3" type="audio/mp3">
+  <source src="musica.mp3" type="audio/mp3">
   Seu navegador não suporta áudio HTML5.
 </audio>
 
@@ -990,6 +948,31 @@ Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender 
       document.addEventListener('scroll', liberarSom);
     });
   });
+</script>
+<button id="btn-musica" style="display: none;"> music</button>
+<!-- Estilo do Botão -->
+<style>
+  #btn-musica {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: #9b59b6;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+  }
+
+  #btn-musica:hover {
+    background-color: #a60be9;
+  }
+</style>
 </script>
 </body>
 
