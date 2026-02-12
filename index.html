@@ -7,27 +7,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-    />
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
     <style>
-        /* --- RESET & VARIÁVEIS GLOBAIS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
+        /* --- RESET & VARIÁVEIS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         :root {
             --cor-primaria: #9b59b6;
             --cor-primaria-escura: #8e44ad;
@@ -37,225 +22,37 @@
             --cor-texto-secundaria: #cccccc;
             --sombra: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--cor-fundo); color: var(--cor-texto); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 6rem 0; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        /* --- AJUSTE GLOBAL DE IMAGENS --- */
+        img { max-width: 100%; height: auto; display: block; }
 
-        body {
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto);
-        }
+        /* --- TITULOS E LINHAS --- */
+        .titulo-secao { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; position: relative; }
+        .titulo-secao::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--cor-primaria); border-radius: 2px; }
+        .linha-secao { border: none; border-top: 1px solid var(--cor-primaria); margin: 4rem 0; width: 100%; opacity: 0.7; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        /* --- HEADER --- */
+        .header { position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 0; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 1000; transition: 0.3s; }
+        .header.scrolled { padding: 0.5rem 0; box-shadow: var(--sombra); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--cor-primaria); text-decoration: none; }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li { margin-left: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--cor-texto); font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--cor-primaria); }
+        .menu-hamburguer { display: none; cursor: pointer; font-size: 1.5rem; }
 
-        section {
-            padding: 6rem 0;
-        }
-
-        .titulo-secao {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .titulo-secao::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--cor-primaria);
-            border-radius: 2px;
-        }
-
-        /* --- LINHA SEPARADORA --- */
-        .linha-secao {
-            border: none;
-            border-top: 1px solid var(--cor-primaria); /* Linha roxa de 1px */
-            margin: 4rem 0; /* Margem superior e inferior, sem centralização pois já ocupa 100% */
-            width: 100%; /* Largura da linha: 100% da tela */
-            opacity: 0.7; /* Transparência */
-        }
-
-        /* --- CABEÇALHO E NAVEGAÇÃO --- */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem 0;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            padding: 0.5rem 0;
-            box-shadow: var(--sombra);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--cor-primaria);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--cor-texto);
-            font-weight: 500;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--cor-primaria);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--cor-primaria);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .menu-hamburguer {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        /* --- SEÇÃO INÍCIO --- */
-        #inicio {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .inicio-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .inicio-texto {
-            max-width: 600px;
-        }
-
-        .inicio-texto h3 {
-            font-size: 1.5rem;
-            font-weight: 400;
-        }
-
-        .inicio-texto h1 {
-            font-size: 3.5rem;
-            margin: 0.5rem 0;
-        }
-
-        .inicio-texto h2 {
-            font-size: 2rem;
-            font-weight: 500;
-            min-height: 2.5rem;
-        }
-
-        .inicio-texto h2 .typing-effect {
-            color: var(--cor-primaria);
-            font-weight: 700;
-        }
-        /* EFEITO DE FLUTUAR NA IMAGEM */
-        .flutuar {
-            animation: subirDescer 2s ease-in-out infinite;
-        }
-
-        @keyframes subirDescer {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        .inicio-texto .btn-cv {
-            margin-top: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Regras gerais para .redes-sociais (usado em Início e Contato) */
-        .redes-sociais {
-            margin-top: 1.5rem; /* Margem para separar do conteúdo acima */
-            display: flex;
-            justify-content: center; /* Centraliza os ícones */
-            gap: 1.5rem; /* Espaçamento entre os ícones */
-        }
-
-        .redes-sociais a {
-            color: var(--cor-texto);
-            font-size: 1.5rem; /* Tamanho dos ícones nas redes sociais do Início */
-            transition: color 0.3s ease, transform 0.3s ease; /* Adiciona transição para o transform */
-        }
-
-        .redes-sociais a:hover {
-            color: var(--cor-primaria);
-            transform: translateY(-3px); /* Pequeno efeito de subir ao passar o mouse */
-        }
-
-        .btn-cv {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--cor-primaria);
-            color: var(--cor-texto);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-cv:hover {
-            background-color: var(--cor-primaria-escura);
-        }
-
+        /* --- INÍCIO --- */
+        #inicio { height: 100vh; display: flex; align-items: center; }
+        .inicio-content { display: flex; align-items: center; justify-content: space-between; gap: 2rem; width: 100%; }
+        .inicio-texto h1 { font-size: 3.5rem; margin: 0.5rem 0; }
+        .inicio-texto h2 { font-size: 2rem; min-height: 2.5rem; color: var(--cor-primaria); }
+        
+        /* Ajuste Foto de Perfil */
         .inicio-imagem img {
             width: 350px;
             height: 350px;
@@ -265,324 +62,62 @@
             box-shadow: 0 0 30px var(--cor-primaria);
         }
 
-        /* --- SEÇÃO SOBRE --- */
-        .sobre-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
+        .flutuar { animation: subirDescer 3s ease-in-out infinite; }
+        @keyframes subirDescer { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .sobre-imagem img {
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: var(--sombra);
-        }
+        .btn-cv { display: inline-block; padding: 0.8rem 2rem; background-color: var(--cor-primaria); color: #fff; text-decoration: none; border-radius: 50px; font-weight: 600; margin-top: 1rem; transition: 0.3s; }
+        .btn-cv:hover { background-color: var(--cor-primaria-escura); transform: scale(1.05); }
 
-        .sobre-texto {
-            max-width: 700px;
-        }
+        /* --- SOBRE --- */
+        .sobre-content { display: flex; align-items: center; gap: 4rem; }
+        .sobre-imagem img { width: 300px; border-radius: 10px; box-shadow: var(--sombra); }
+        .sobre-texto p { line-height: 1.7; color: var(--cor-texto-secundaria); margin-bottom: 1rem; }
 
-        .sobre-texto p {
-            line-height: 1.7;
-            color: var(--cor-texto-secundaria);
-            margin-bottom: 1rem;
-        }
+        /* --- PROJETOS --- */
+        .projetos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .projeto-card { background: var(--cor-fundo-secundaria); border-radius: 10px; overflow: hidden; transition: 0.3s; }
+        .projeto-card:hover { transform: translateY(-10px); }
+        .projeto-card img { width: 100%; height: 200px; object-fit: cover; }
+        .projeto-info { padding: 1.5rem; }
+        .projeto-links a { color: var(--cor-primaria); text-decoration: none; font-weight: 600; }
 
-        /* --- SEÇÃO PROJETOS --- */
-        .projetos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min-width ajustado */
-            gap: 1.5rem; /* Espaçamento menor */
-        }
+        /* --- HABILIDADES --- */
+        .habilidades-icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+        .habilidades-icons div { text-align: center; width: 100px; }
+        .habilidades-icons img { width: 60px; height: 60px; margin: 0 auto 0.5rem; transition: 0.3s; }
+        .habilidades-icons img:hover { transform: scale(1.2); }
 
-        .projeto-card {
-            background-color: var(--cor-fundo-secundaria);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--sombra);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+        /* --- CONTATO --- */
+        .redes-sociais { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+        .redes-sociais a { width: 55px; height: 55px; border: 2px solid var(--cor-primaria); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--cor-primaria); transition: 0.3s; text-decoration: none; }
+        .redes-sociais a:hover { background: var(--cor-primaria); color: #fff; transform: translateY(-5px); }
 
-        .projeto-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .projeto-card img {
-            width: 100%;
-            height: 150px; /* Altura da imagem reduzida */
-            object-fit: cover;
-        }
-
-        .projeto-info {
-            padding: 1rem; /* Preenchimento reduzido */
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .projeto-info h3 {
-            font-size: 1.2rem; /* Tamanho da fonte do título reduzido */
-            margin-bottom: 0.4rem;
-        }
-
-        .projeto-info p {
-            color: var(--cor-texto-secundaria);
-            font-size: 0.9rem; /* Tamanho da fonte do parágrafo reduzido */
-            margin-bottom: 0.8rem;
-            flex-grow: 1;
-        }
-
-        .projeto-links a {
-            color: var(--cor-primaria);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem; /* Tamanho da fonte dos links reduzido */
-            margin-right: 0.8rem;
-        }
-
-        .projeto-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- SEÇÃO HABILIDADES --- */
-        .section h1 {
-            text-align: center;
-            color: #9b59b6;
-            font-size: 2.6rem;
-            margin-bottom: 2.5rem;
-            letter-spacing: 1.2px;
-        }
-
-        .habilidades-icons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
-        .habilidades-icons div {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .habilidades-icons img {
-            width: 70px;
-            height: 70px;
-            transition: transform 0.3s ease;
-            background-color: transparent;
-            border-radius: 0;
-            padding: 0;
-        }
-
-        .habilidades-icons img:hover {
-            transform: scale(1.2);
-        }
-
-        .habilidades-icons span {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--cor-texto-secundaria);
-        }
-
-        /* --- SEÇÃO CONTATO --- */
-        #contato .redes-sociais {
-            /* Já definido nas regras gerais .redes-sociais */
-            margin-top: 1.5rem; /* Ajusta a margem para subir um pouco */
-            margin-bottom: 2rem; /* Adiciona uma margem inferior para separar do rodapé */
-        }
-
-        #contato .redes-sociais a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 55px; /* Aumenta um pouco o tamanho do círculo */
-            height: 55px; /* Aumenta um pouco o tamanho do círculo */
-            border: 2px solid var(--cor-primaria);
-            border-radius: 50%;
-            font-size: 2.2rem; /* Aumenta o tamanho do ícone */
-            color: var(--cor-primaria);
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Adiciona transição para o transform */
-        }
-
-        #contato .redes-sociais a:hover {
-            background-color: var(--cor-primaria);
-            color: var(--cor-texto);
-            transform: translateY(-5px); /* Efeito de "subir" ao passar o mouse */
-            box-shadow: var(--sombra); /* Adiciona sombra ao passar o mouse */
-        }
-
-        /* --- RODAPÉ --- */
-        footer {
-            background-color: var(--cor-primaria-escura);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        footer p {
-            color: var(--cor-texto);
-        }
-
-        /* --- BOTÃO VOLTAR AO TOPO --- */
-        #btn-topo {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--cor-primaria);
-            color: var(--cor-texto);
-            border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        #btn-topo.show {
-            display: flex;
-            opacity: 1;
-            visibility: visible;
-        }
+        /* --- FOOTER & BOTÕES --- */
+        footer { background: var(--cor-primaria-escura); padding: 2rem; text-align: center; }
+        #btn-topo, #btn-musica { position: fixed; right: 20px; border: none; border-radius: 50px; cursor: pointer; z-index: 999; transition: 0.3s; color: #fff; background: var(--cor-primaria); box-shadow: var(--sombra); }
+        #btn-topo { bottom: 20px; width: 50px; height: 50px; display: none; }
+        #btn-musica { bottom: 85px; padding: 0.5rem 1rem; font-size: 0.8rem; }
 
         /* --- RESPONSIVIDADE --- */
-        /* Ajustes para telas até 992px (desktops menores, tablets maiores) */
         @media (max-width: 992px) {
-            .inicio-content {
-                flex-direction: column-reverse; /* Inverte a ordem do texto e imagem */
-                text-align: center;
-            }
-            .inicio-texto {
-                max-width: 100%;
-            }
-            /* .redes-sociais já centralizado */
-            .sobre-content {
-                flex-direction: column; /* Imagem e texto empilhados */
-                text-align: center;
-                gap: 2rem; /* Reduz o espaço entre a imagem e o texto */
-            }
-            .sobre-imagem img {
-                width: 70%; /* Imagem Sobre ocupa mais largura em telas médias */
-                max-width: 300px;
-            }
-        }
-
-        /* Ajustes para telas até 768px (tablets e celulares grandes) */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                right: -100%; /* Esconde o menu fora da tela */
-                width: 100%;
-                height: calc(100vh - 60px); /* Altura total da tela menos o header */
-                background-color: var(--cor-fundo-secundaria);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: right 0.3s ease-in-out;
-                z-index: 990; /* Abaixo do header */
-            }
-            .nav-links.active {
-                right: 0; /* Mostra o menu */
-            }
-            .nav-links li {
-                margin: 1.5rem 0; /* Espaçamento entre os itens do menu */
-            }
-            .menu-hamburguer {
-                display: block; /* Mostra o ícone do hamburguer */
-            }
-            .inicio-texto h1 {
-                font-size: 2.8rem;
-            }
-            .inicio-texto h2 {
-                font-size: 1.8rem;
-            }
-            .inicio-imagem img {
-                width: 280px;
-                height: 280px;
-            }
-        }
-
-        /* NOVOS Ajustes para telas até 576px (celulares menores) */
-        @media (max-width: 576px) {
-            html {
-                font-size: 14px; /* Reduz a fonte base para telas menores */
-            }
-
-            section {
-                padding: 4rem 0; /* Reduz o padding vertical das seções */
-            }
-
-            .container {
-                padding: 0 1rem; /* Reduz o padding horizontal do container */
-            }
-
-            .titulo-secao {
-                font-size: 2rem; /* Reduz o tamanho do título das seções */
-                margin-bottom: 2rem;
-            }
-
-            .inicio-imagem img {
-                width: 220px;
-                height: 220px;
-            }
-
-            .sobre-imagem img {
-                width: 80%; /* A imagem Sobre ocupa mais largura em telas muito pequenas */
-                max-width: 200px; /* Garante que não fique muito grande */
-                margin-bottom: 1rem; /* Adiciona margem abaixo da imagem Sobre quando empilhada */
-            }
-
-            .projetos-grid {
-                grid-template-columns: 1fr; /* Força uma única coluna para os projetos */
-            }
-
-            .habilidades-icons {
-                gap: 1rem; /* Reduz o espaço entre os ícones de habilidades */
-            }
-
-            .habilidades-icons img {
-                width: 50px;
-                height: 50px;
-            }
-            .habilidades-icons span {
-                font-size: 0.8rem; /* Reduz o tamanho do texto das habilidades */
-            }
-
-            #contato .redes-sociais a {
-                width: 45px;
-                height: 45px;
-                font-size: 1.8rem;
-                gap: 1rem; /* Diminui o gap para caber melhor */
-            }
+            .inicio-content, .sobre-content { flex-direction: column; text-align: center; }
+            .nav-links { display: none; } /* Simplificado para o exemplo */
+            .inicio-imagem img { width: 280px; height: 280px; }
         }
     </style>
 </head>
 <body>
+
     <header class="header">
         <div class="container navbar">
             <a href="#inicio" class="logo">annaschmidt.</a>
             <ul class="nav-links">
-                <li><a href="#inicio" class="active">Início</a></li>
+                <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#habilidades">Habilidades</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
-            <div class="menu-hamburguer">
-                <i class="fa-solid fa-bars"></i>
-            </div>
         </div>
     </header>
 
@@ -593,17 +128,14 @@
                     <h3>Olá, sou</h3>
                     <h1>Anna Schmidt</h1>
                     <h2><span class="typing-effect"></span></h2>
-                    <a href="Currículo.pdf" class="btn-cv" target="_blank">Download CV</a>
+                    <a href="Currículo.pdf" class="btn-cv" target="_blank">Download CV</a>
                 </div>
                 <div class="inicio-imagem">
-                    <img
-                        src="anna-schmidt.jpg.JPG"
-                        alt="Foto de formatura de Anna Schmidt"
-                        class="flutuar"
-                    />
+                    <img src="anna-schmidt.jpg.JPG" alt="Anna Schmidt" class="flutuar" />
                 </div>
             </div>
         </section>
+
         <hr class="linha-secao" />
 
         <section id="sobre">
@@ -611,23 +143,16 @@
                 <h2 class="titulo-secao">Sobre Mim</h2>
                 <div class="sobre-content">
                     <div class="sobre-imagem">
-                        <img
-                            src="anna-schmidt.jpg.JPG"
-                            alt="Foto de Anna Schmidt"
-                        />
+                        <img src="anna-schmidt.jpg.JPG" alt="Anna Schmidt" />
                     </div>
                     <div class="sobre-texto">
-                        <h3>Olá! Meu nome é Anna Schmidt, tenho 21 anos.
-Sou apaixonada por programação e criação de soluções que fazem a diferença. Estou em constante evolução, estudando e desenvolvendo projetos práticos para aprimorar minhas habilidades nas tecnologias atuais do mercado.
-Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender com profissionais da área e contribuir com meu comprometimento, criatividade e vontade de crescer. Acredito que a tecnologia tem o poder de transformar o mundo, e quero fazer parte dessa transformação.
-                        <p>
-                        </p>
-                        <p>
-                        </p>
+                        <p>Olá! Meu nome é Anna Schmidt, tenho 21 anos. Sou apaixonada por programação e criação de soluções que fazem a diferença. Estou em constante evolução, estudando e desenvolvendo projetos práticos para aprimorar minhas habilidades.</p>
+                        <p>Busco oportunidades para aplicar meus conhecimentos em projetos reais, contribuir com comprometimento e criatividade.</p>
                     </div>
                 </div>
             </div>
         </section>
+
         <hr class="linha-secao" />
 
         <section id="projetos">
@@ -635,120 +160,53 @@ Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender 
                 <h2 class="titulo-secao">Projetos</h2>
                 <div class="projetos-grid">
                     <div class="projeto-card">
-                        <img
-                            src="https://img.icons8.com/pulsar-gradient/1200/github.jpg"
-                            alt="Imagem do Projeto GitHub Explorer"
-                        />
+                        <img src="https://img.icons8.com/pulsar-gradient/1200/github.jpg" alt="GitHub Explorer" loading="lazy">
                         <div class="projeto-info">
                             <h3>GitHub Explorer</h3>
-                            <p>
-                                O GitHub Explorer é um projeto desenvolvido para demonstrar habilidades avançadas com React, incluindo consumo de APIs REST, manipulação de estados complexos e otimização de requisições assíncronas.
-                            </p>
+                            <p>Consumo de APIs REST e manipulação de estados com React.</p>
                             <div class="projeto-links">
-                                <a href="https://github.com/anninhaschmid/GitHub-Repo-Finder.github.io" target="_blank"
-                                    >Visitar Site <i class="fa-solid fa-arrow-up-right-from-square"></i
-                                ></a>
+                                <a href="https://github.com/anninhaschmid/GitHub-Repo-Finder.github.io" target="_blank">Ver Projeto <i class="fa-solid fa-external-link"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="projeto-card">
-                        <img
-                            src="https://img.pikbest.com/wp/202350/chef-cook-cooking-goes-digital-access-online-courses-and-restaurant-deliveries-via-smartphone-3d-cartoon-illustration_9788244.jpg!bwr800"
-                            alt="Imagem do Projeto Chef Digital"
-                        />
+                        <img src="https://img.pikbest.com/wp/202350/chef-cook-cooking-goes-digital-access-online-courses-and-restaurant-deliveries-via-smartphone-3d-cartoon-illustration_9788244.jpg!bwr800" alt="Chef Digital" loading="lazy">
                         <div class="projeto-info">
                             <h3>Chef Digital</h3>
-                            <p>
-                                Projeto Chef Digital com filtragem dinâmica de receitas por título ou categoria com otimização de desempenho (debounce).
-                            </p>
+                            <p>Filtragem dinâmica de receitas com otimização de desempenho.</p>
                             <div class="projeto-links">
-                                <a href="https://github.com/anninhaschmid/Chef-Digital.github.io" target="_blank"
-                                    >Ver no GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i
-                                ></a>
+                                <a href="https://github.com/anninhaschmid/Chef-Digital.github.io" target="_blank">Ver Projeto <i class="fa-solid fa-external-link"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <hr class="linha-secao" />
 
-        <section id="habilidades" class="section">
-            <h1>Habilidades</h1>
-            <div class="habilidades-icons">
-                <div>
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                        alt="HTML5"
-                        title="HTML5"
-                    />
-                    <span>HTML5</span>
+        <section id="habilidades">
+            <div class="container">
+                <h2 class="titulo-secao">Habilidades</h2>
+                <div class="habilidades-icons">
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><span>HTML5</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><span>CSS3</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"><span>JavaScript</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"><span>React</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node"><span>Node.js</span></div>
                 </div>
-                <div>
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                        alt="CSS3"
-                        title="CSS3"
-                    />
-                    <span>CSS3</span>
-                </div>
-                <div>
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                        alt="JavaScript"
-                        title="JavaScript"
-                    />
-                    <span>JavaScript</span>
-                </div>
-                <div>
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                        alt="Python"
-                        title="Python"
-                    />
-                    <span>Python</span>
-                </div>
-                <div>
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-                        alt="Java"
-                        title="Java"
-                    />
-                    <span>Java</span>
-                </div>
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg"
-                        alt="Node.js"
-                        title="Node.js"
-                    />
-                    <span>Node.js</span>
-                </div>
-                <div>
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                        alt="React"
-                        title="React"
-                    />
             </div>
         </section>
+
         <hr class="linha-secao" />
 
         <section id="contato">
             <div class="container">
                 <h2 class="titulo-secao">Contato</h2>
-                <p style="text-align: center; font-size: 1.2rem; color: var(--cor-texto-secundaria);">
-                    
-                </p>
                 <div class="redes-sociais">
-                    <a href="https://www.linkedin.com/in/annaschmidt-dev" target="_blank" title="LinkedIn" aria-label="LinkedIn de Anna Schmidt">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/anninhaschmid" target="_blank" title="GitHub" aria-label="GitHub de Anna Schmidt">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/annaschmidt.dev/" target="_blank" title="Instagram" aria-label="Instagram de Anna Schmidt">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
+                    <a href="https://www.linkedin.com/in/annaschmidt-dev" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/anninhaschmid" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/annaschmidt.dev/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
         </section>
@@ -758,198 +216,48 @@ Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender 
         <p>© 2025 Anna Schmidt - Todos os direitos reservados.</p>
     </footer>
 
-    <button id="btn-topo" title="Voltar ao topo">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    <button id="btn-topo"><i class="fa-solid fa-arrow-up"></i></button>
+    <button id="btn-musica">Play Music</button>
+
+    <audio id="musicaFundo" loop>
+        <source src="music.´m´3.mp3" type="audio/mp3">
+    </audio>
 
     <script>
-        // Efeito de digitação com múltiplas frases
+        // Efeito Digitação
         const typingElement = document.querySelector(".typing-effect");
-        const phrases = ["Desenvolvedora Full Stack", "Criadora de Projetos", "Apaixonada por Tecnologia"];
-        let currentPhraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
+        const phrases = ["Desenvolvedora Full Stack", "Criadora de Soluções", "Apaixonada por Tech"];
+        let i = 0, j = 0, isDel = false;
         function type() {
-            const currentPhrase = phrases[currentPhraseIndex];
-            const currentText = currentPhrase.substring(0, charIndex);
-            typingElement.textContent = currentText;
-
-            if (!isDeleting && charIndex < currentPhrase.length) {
-                charIndex++;
-                setTimeout(type, 100);
-            } else if (isDeleting && charIndex > 0) {
-                charIndex--;
-                setTimeout(type, 50);
-            } else {
-                isDeleting = !isDeleting;
-                currentPhraseIndex = !isDeleting ? (currentPhraseIndex + 1) % phrases.length : currentPhraseIndex;
-                setTimeout(type, 1000);
-            }
+            const current = phrases[i];
+            typingElement.textContent = isDel ? current.substring(0, j--) : current.substring(0, j++);
+            if (!isDel && j > current.length) { isDel = true; setTimeout(type, 2000); }
+            else if (isDel && j < 0) { isDel = false; i = (i + 1) % phrases.length; setTimeout(type, 500); }
+            else { setTimeout(type, isDel ? 50 : 100); }
         }
+        type();
 
-        if (typingElement) {
-            type();
-        }
-
-        // Menu hamburguer
-        const menuHamburguer = document.querySelector('.menu-hamburguer');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuHamburguer.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuHamburguer.querySelector('i').classList.toggle('fa-bars');
-            menuHamburguer.querySelector('i').classList.toggle('fa-xmark');
-        });
-
-        // Scroll para adicionar sombra ao header
+        // Scroll Effects
+        const btnTopo = document.getElementById('btn-topo');
+        const header = document.querySelector('.header');
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-
-            // Mostrar botão voltar ao topo
-            const btnTopo = document.getElementById('btn-topo');
-            if (window.scrollY > 300) {
-                btnTopo.classList.add('show');
-            } else {
-                btnTopo.classList.remove('show');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 50);
+            btnTopo.style.display = window.scrollY > 300 ? 'flex' : 'none';
         });
+        btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Scroll para topo ao clicar no botão
-        document.getElementById('btn-topo').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Música
+        const musica = document.getElementById('musicaFundo');
+        const btnMusica = document.getElementById('btn-musica');
+        musica.volume = 0.2;
+        btnMusica.addEventListener('click', () => {
+            if (musica.paused) { musica.play(); btnMusica.textContent = "Pause Music"; }
+            else { musica.pause(); btnMusica.textContent = "Play Music"; }
         });
     </script>
-    
-</script>
-<!-- Música de Fundo -->
-<audio id="musicaFundo" autoplay loop>
-  <source src="music.´m´3.mp3" type="audio/mp3">
-  Seu navegador não suporta áudio HTML5.
-</audio>
-
-<!-- Estilo do Botão -->
-<style>
-  #btn-musica {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    background-color: #9b59b6;
-    color: #ffffff;
-    border: none;
-    border-radius: 30px;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-  }
-
-  #btn-musica:hover {
-    background-color: #8e44ad;
-  }
-</style>
-
-<!-- Script para Controle do Áudio -->
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const musica = document.getElementById('musicaFundo');
-    const btnMusica = document.getElementById('btn-musica');
-    let tocando = true;
-
-    musica.volume = 0.2; // Volume suave
-
-    // Tenta iniciar automaticamente
-    musica.play().then(() => {
-      // Autoplay funcionou, mantém o botão oculto
-    }).catch(() => {
-      // Autoplay foi bloqueado, exibe o botão
-      btnMusica.style.display = 'block';
-      tocando = false;
-    });
-
-    // Controle do botão
-    btnMusica.addEventListener('click', () => {
-      if (tocando) {
-        musica.pause();
-        btnMusica.textContent = "Ativar Música";
-        tocando = false;
-        btnMusica.style.display = 'block';
-      } else {
-        musica.play().then(() => {
-          btnMusica.textContent = "Pausar Música";
-          tocando = true;
-          btnMusica.style.display = 'none';
-        }).catch(() => {
-          console.warn("Erro ao tentar tocar a música.");
-        });
-      }
-    });
-  });
-</script>
-<!-- Música de Fundo -->
-<audio id="musicaFundo" autoplay loop>
-  <source src="music.´m´3.mp3" type="audio/mp3">
-  Seu navegador não suporta áudio HTML5.
-</audio>
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const musica = document.getElementById('musicaFundo');
-    musica.volume = 0.3; // volume inicial
-
-    // tenta tocar com áudio normal
-    musica.play().catch(() => {
-      // se bloqueado, força mudo e tenta de novo
-      musica.muted = true;
-      musica.play();
-
-      // ao primeiro clique, rolagem ou tecla, libera o som
-      const liberarSom = () => {
-        musica.muted = false;
-        document.removeEventListener('click', liberarSom);
-        document.removeEventListener('keydown', liberarSom);
-        document.removeEventListener('scroll', liberarSom);
-      };
-
-      document.addEventListener('click', liberarSom);
-      document.addEventListener('keydown', liberarSom);
-      document.addEventListener('scroll', liberarSom);
-    });
-  });
-</script>
-<button id="btn-musica" style="display: none;"> music</button>
-<!-- Estilo do Botão -->
-<style>
-  #btn-musica {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    background-color: #9b59b6;
-    color: #ffffff;
-    border: none;
-    border-radius: 30px;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-  }
-
-  #btn-musica:hover {
-    background-color: #a60be9;
-  }
-</style>
-</script>
 </body>
+</html>
+
 
 
 
