@@ -20,7 +20,6 @@
     />
 
     <style>
-        /* --- RESET & VARIÁVEIS GLOBAIS --- */
         * {
             margin: 0;
             padding: 0;
@@ -38,24 +37,11 @@
             --sombra: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--cor-fundo); color: var(--cor-texto); }
 
-        body {
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 6rem 0;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 6rem 0; }
 
         .titulo-secao {
             text-align: center;
@@ -63,7 +49,6 @@
             margin-bottom: 3rem;
             position: relative;
         }
-
         .titulo-secao::after {
             content: '';
             position: absolute;
@@ -76,7 +61,6 @@
             border-radius: 2px;
         }
 
-        /* --- LINHA SEPARADORA --- */
         .linha-secao {
             border: none;
             border-top: 1px solid var(--cor-primaria);
@@ -85,11 +69,9 @@
             opacity: 0.7;
         }
 
-        /* --- CABEÇALHO E NAVEGAÇÃO --- */
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100%;
             padding: 1rem 0;
             background-color: rgba(0, 0, 0, 0.8);
@@ -97,34 +79,13 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
+        .header.scrolled { padding: 0.5rem 0; box-shadow: var(--sombra); }
 
-        .header.scrolled {
-            padding: 0.5rem 0;
-            box-shadow: var(--sombra);
-        }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--cor-primaria); text-decoration: none; }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--cor-primaria);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li { margin-left: 2rem; }
         .nav-links a {
             text-decoration: none;
             color: var(--cor-texto);
@@ -132,42 +93,25 @@
             position: relative;
             transition: color 0.3s ease;
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
+            bottom: -5px; left: 0;
+            width: 0; height: 2px;
             background-color: var(--cor-primaria);
             transition: width 0.3s ease;
         }
+        .nav-links a:hover, .nav-links a.active { color: var(--cor-primaria); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--cor-primaria);
-        }
+        .menu-hamburguer { display: none; cursor: pointer; font-size: 1.5rem; }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .menu-hamburguer {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        /* --- SEÇÃO INÍCIO --- */
         #inicio {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .inicio-content {
             display: flex;
             align-items: center;
@@ -175,65 +119,24 @@
             gap: 2rem;
             width: 100%;
         }
+        .inicio-texto { max-width: 600px; }
+        .inicio-texto h3 { font-size: 1.5rem; font-weight: 400; }
+        .inicio-texto h1 { font-size: 3.5rem; margin: 0.5rem 0; }
+        .inicio-texto h2 { font-size: 2rem; font-weight: 500; min-height: 2.5rem; }
+        .inicio-texto h2 .typing-effect { color: var(--cor-primaria); font-weight: 700; }
 
-        .inicio-texto {
-            max-width: 600px;
-        }
-
-        .inicio-texto h3 {
-            font-size: 1.5rem;
-            font-weight: 400;
-        }
-
-        .inicio-texto h1 {
-            font-size: 3.5rem;
-            margin: 0.5rem 0;
-        }
-
-        .inicio-texto h2 {
-            font-size: 2rem;
-            font-weight: 500;
-            min-height: 2.5rem;
-        }
-
-        .inicio-texto h2 .typing-effect {
-            color: var(--cor-primaria);
-            font-weight: 700;
-        }
-
-        /* EFEITO DE FLUTUAR NA IMAGEM */
-        .flutuar {
-            animation: subirDescer 2s ease-in-out infinite;
-        }
-
+        .flutuar { animation: subirDescer 2s ease-in-out infinite; }
         @keyframes subirDescer {
             0%   { transform: translateY(0); }
             50%  { transform: translateY(-10px); }
             100% { transform: translateY(0); }
         }
 
-        .inicio-texto .btn-cv {
-            margin-top: 1rem;
-            margin-bottom: 2rem;
-        }
+        .inicio-texto .btn-cv { margin-top: 1rem; margin-bottom: 2rem; }
 
-        .redes-sociais {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .redes-sociais a {
-            color: var(--cor-texto);
-            font-size: 1.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .redes-sociais a:hover {
-            color: var(--cor-primaria);
-            transform: translateY(-3px);
-        }
+        .redes-sociais { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; }
+        .redes-sociais a { color: var(--cor-texto); font-size: 1.5rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .redes-sociais a:hover { color: var(--cor-primaria); transform: translateY(-3px); }
 
         .btn-cv {
             display: inline-block;
@@ -245,52 +148,23 @@
             font-weight: 600;
             transition: background-color 0.3s ease;
         }
-
-        .btn-cv:hover {
-            background-color: var(--cor-primaria-escura);
-        }
+        .btn-cv:hover { background-color: var(--cor-primaria-escura); }
 
         .inicio-imagem img {
-            width: 350px;
-            height: 350px;
+            width: 350px; height: 350px;
             object-fit: cover;
             border-radius: 50%;
             border: 5px solid var(--cor-primaria);
             box-shadow: 0 0 30px var(--cor-primaria);
         }
 
-        /* --- SEÇÃO SOBRE --- */
-        .sobre-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
+        .sobre-content { display: flex; align-items: center; gap: 4rem; }
+        .sobre-imagem img { width: 300px; border-radius: 10px; box-shadow: var(--sombra); }
+        .sobre-texto { max-width: 700px; }
+        .sobre-texto h3 { font-size: 1.1rem; font-weight: 400; line-height: 1.7; color: var(--cor-texto-secundaria); margin-bottom: 1rem; }
+        .sobre-texto p { line-height: 1.7; color: var(--cor-texto-secundaria); margin-bottom: 1rem; }
 
-        .sobre-imagem img {
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: var(--sombra);
-        }
-
-        .sobre-texto {
-            max-width: 700px;
-        }
-
-        .sobre-texto h3 {
-            font-size: 1.1rem;
-            font-weight: 400;
-            line-height: 1.7;
-            color: var(--cor-texto-secundaria);
-            margin-bottom: 1rem;
-        }
-
-        .sobre-texto p {
-            line-height: 1.7;
-            color: var(--cor-texto-secundaria);
-            margin-bottom: 1rem;
-        }
-
-        /* --- SEÇÃO PROJETOS --- */
+        /* --- PROJETOS --- */
         .projetos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -306,15 +180,49 @@
             display: flex;
             flex-direction: column;
         }
+        .projeto-card:hover { transform: translateY(-10px); }
 
-        .projeto-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .projeto-card img {
+        /* Wrapper da imagem com fallback visual */
+        .projeto-img-wrapper {
             width: 100%;
             height: 150px;
+            overflow: hidden;
+            background-color: #111;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .projeto-img-wrapper img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Fallback: mostra quando imagem falha */
+        .projeto-img-fallback {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #1e1e1e 0%, #2a1a3e 100%);
+        }
+        .projeto-img-fallback span {
+            font-size: 0.85rem;
+            color: var(--cor-primaria);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .projeto-img-fallback i {
+            font-size: 2rem;
+            color: var(--cor-primaria);
+            opacity: 0.7;
         }
 
         .projeto-info {
@@ -323,32 +231,12 @@
             flex-direction: column;
             flex-grow: 1;
         }
+        .projeto-info h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+        .projeto-info p { color: var(--cor-texto-secundaria); font-size: 0.9rem; margin-bottom: 0.8rem; flex-grow: 1; }
+        .projeto-links a { color: var(--cor-primaria); text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-right: 0.8rem; }
+        .projeto-links a:hover { text-decoration: underline; }
 
-        .projeto-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .projeto-info p {
-            color: var(--cor-texto-secundaria);
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-            flex-grow: 1;
-        }
-
-        .projeto-links a {
-            color: var(--cor-primaria);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-right: 0.8rem;
-        }
-
-        .projeto-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- SEÇÃO HABILIDADES --- */
+        /* --- HABILIDADES --- */
         .habilidades-icons {
             display: flex;
             flex-wrap: wrap;
@@ -359,52 +247,24 @@
             margin: 0 auto;
             padding: 1rem;
         }
+        .habilidades-icons div { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .habilidades-icons img { width: 70px; height: 70px; transition: transform 0.3s ease; }
+        .habilidades-icons img:hover { transform: scale(1.2); }
+        .habilidades-icons span { margin-top: 0.5rem; font-size: 0.9rem; color: var(--cor-texto-secundaria); }
 
-        .habilidades-icons div {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .habilidades-icons img {
-            width: 70px;
-            height: 70px;
-            transition: transform 0.3s ease;
-            background-color: transparent;
-            border-radius: 0;
-            padding: 0;
-        }
-
-        .habilidades-icons img:hover {
-            transform: scale(1.2);
-        }
-
-        .habilidades-icons span {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--cor-texto-secundaria);
-        }
-
-        /* --- SEÇÃO CONTATO --- */
-        #contato .redes-sociais {
-            margin-top: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
+        /* --- CONTATO --- */
+        #contato .redes-sociais { margin-top: 1.5rem; margin-bottom: 2rem; }
         #contato .redes-sociais a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 55px;
-            height: 55px;
+            width: 55px; height: 55px;
             border: 2px solid var(--cor-primaria);
             border-radius: 50%;
             font-size: 2.2rem;
             color: var(--cor-primaria);
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
-
         #contato .redes-sociais a:hover {
             background-color: var(--cor-primaria);
             color: var(--cor-texto);
@@ -412,165 +272,75 @@
             box-shadow: var(--sombra);
         }
 
-        /* --- RODAPÉ --- */
-        footer {
-            background-color: var(--cor-primaria-escura);
-            padding: 2rem 0;
-            text-align: center;
-        }
+        footer { background-color: var(--cor-primaria-escura); padding: 2rem 0; text-align: center; }
+        footer p { color: var(--cor-texto); }
 
-        footer p {
-            color: var(--cor-texto);
-        }
-
-        /* --- BOTÃO VOLTAR AO TOPO --- */
         #btn-topo {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
+            bottom: 20px; right: 20px;
+            width: 50px; height: 50px;
             background-color: var(--cor-primaria);
             color: var(--cor-texto);
-            border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
+            border: none; border-radius: 50%;
+            font-size: 1.5rem; cursor: pointer;
             display: none;
-            align-items: center;
-            justify-content: center;
+            align-items: center; justify-content: center;
             z-index: 999;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
+        #btn-topo.show { display: flex; opacity: 1; visibility: visible; }
 
-        #btn-topo.show {
-            display: flex;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* --- BOTÃO MÚSICA --- */
         #btn-musica {
             position: fixed;
-            bottom: 90px;
-            right: 20px;
+            bottom: 90px; right: 20px;
             background-color: var(--cor-primaria);
             color: #ffffff;
-            border: none;
-            border-radius: 30px;
+            border: none; border-radius: 30px;
             padding: 0.7rem 1.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            z-index: 999;
+            font-size: 1rem; font-weight: 600;
+            cursor: pointer; z-index: 999;
             box-shadow: var(--sombra);
             transition: background-color 0.3s ease;
             display: none;
         }
+        #btn-musica:hover { background-color: var(--cor-primaria-escura); }
 
-        #btn-musica:hover {
-            background-color: var(--cor-primaria-escura);
-        }
-
-        /* --- RESPONSIVIDADE --- */
         @media (max-width: 992px) {
-            .inicio-content {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            .inicio-texto {
-                max-width: 100%;
-            }
-            .sobre-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-            .sobre-imagem img {
-                width: 70%;
-                max-width: 300px;
-            }
+            .inicio-content { flex-direction: column-reverse; text-align: center; }
+            .inicio-texto { max-width: 100%; }
+            .sobre-content { flex-direction: column; text-align: center; gap: 2rem; }
+            .sobre-imagem img { width: 70%; max-width: 300px; }
         }
-
         @media (max-width: 768px) {
             .nav-links {
-                position: absolute;
-                top: 100%;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 60px);
+                position: absolute; top: 100%; right: -100%;
+                width: 100%; height: calc(100vh - 60px);
                 background-color: var(--cor-fundo-secundaria);
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                align-items: center; justify-content: center;
                 transition: right 0.3s ease-in-out;
                 z-index: 990;
             }
-            .nav-links.active {
-                right: 0;
-            }
-            .nav-links li {
-                margin: 1.5rem 0;
-            }
-            .menu-hamburguer {
-                display: block;
-            }
-            .inicio-texto h1 {
-                font-size: 2.8rem;
-            }
-            .inicio-texto h2 {
-                font-size: 1.8rem;
-            }
-            .inicio-imagem img {
-                width: 280px;
-                height: 280px;
-            }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 1.5rem 0; }
+            .menu-hamburguer { display: block; }
+            .inicio-texto h1 { font-size: 2.8rem; }
+            .inicio-texto h2 { font-size: 1.8rem; }
+            .inicio-imagem img { width: 280px; height: 280px; }
         }
-
         @media (max-width: 576px) {
-            html {
-                font-size: 14px;
-            }
-            section {
-                padding: 4rem 0;
-            }
-            .container {
-                padding: 0 1rem;
-            }
-            .titulo-secao {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-            .inicio-imagem img {
-                width: 220px;
-                height: 220px;
-            }
-            .sobre-imagem img {
-                width: 80%;
-                max-width: 200px;
-                margin-bottom: 1rem;
-            }
-            .projetos-grid {
-                grid-template-columns: 1fr;
-            }
-            .habilidades-icons {
-                gap: 1rem;
-            }
-            .habilidades-icons img {
-                width: 50px;
-                height: 50px;
-            }
-            .habilidades-icons span {
-                font-size: 0.8rem;
-            }
-            #contato .redes-sociais a {
-                width: 45px;
-                height: 45px;
-                font-size: 1.8rem;
-            }
-            #contato .redes-sociais {
-                gap: 1rem;
-            }
+            html { font-size: 14px; }
+            section { padding: 4rem 0; }
+            .container { padding: 0 1rem; }
+            .titulo-secao { font-size: 2rem; margin-bottom: 2rem; }
+            .inicio-imagem img { width: 220px; height: 220px; }
+            .sobre-imagem img { width: 80%; max-width: 200px; margin-bottom: 1rem; }
+            .projetos-grid { grid-template-columns: 1fr; }
+            .habilidades-icons { gap: 1rem; }
+            .habilidades-icons img { width: 50px; height: 50px; }
+            .habilidades-icons span { font-size: 0.8rem; }
+            #contato .redes-sociais a { width: 45px; height: 45px; font-size: 1.8rem; }
+            #contato .redes-sociais { gap: 1rem; }
         }
     </style>
 </head>
@@ -592,7 +362,6 @@
     </header>
 
     <main>
-        <!-- INÍCIO -->
         <section id="inicio">
             <div class="container inicio-content">
                 <div class="inicio-texto">
@@ -602,42 +371,29 @@
                     <a href="curriculo.pdf" class="btn-cv" target="_blank" rel="noopener noreferrer">Download CV</a>
                 </div>
                 <div class="inicio-imagem">
-                    <img
-                        src="annaschmidt.jpg"
-                        alt="Foto de formatura de Anna Schmidt"
-                        class="flutuar"
-                    />
+                    <img src="annaschmidt.jpg" alt="Foto de formatura de Anna Schmidt" class="flutuar" />
                 </div>
             </div>
         </section>
         <hr class="linha-secao" />
 
-        <!-- SOBRE -->
         <section id="sobre">
             <div class="container">
                 <h2 class="titulo-secao">Sobre Mim</h2>
                 <div class="sobre-content">
                     <div class="sobre-imagem">
-                        <img
-                            src="annaschmidt.jpg"
-                            alt="Foto de Anna Schmidt"
-                        />
+                        <img src="annaschmidt.jpg" alt="Foto de Anna Schmidt" />
                     </div>
                     <div class="sobre-texto">
                         <h3>Olá! Meu nome é Anna Schmidt, tenho 21 anos.</h3>
-                        <p>
-                            Sou apaixonada por programação e criação de soluções que fazem a diferença. Estou em constante evolução, estudando e desenvolvendo projetos práticos para aprimorar minhas habilidades nas tecnologias atuais do mercado.
-                        </p>
-                        <p>
-                            Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender com profissionais da área e contribuir com meu comprometimento, criatividade e vontade de crescer. Acredito que a tecnologia tem o poder de transformar o mundo, e quero fazer parte dessa transformação.
-                        </p>
+                        <p>Sou apaixonada por programação e criação de soluções que fazem a diferença. Estou em constante evolução, estudando e desenvolvendo projetos práticos para aprimorar minhas habilidades nas tecnologias atuais do mercado.</p>
+                        <p>Busco oportunidades para aplicar meus conhecimentos em projetos reais, aprender com profissionais da área e contribuir com meu comprometimento, criatividade e vontade de crescer. Acredito que a tecnologia tem o poder de transformar o mundo, e quero fazer parte dessa transformação.</p>
                     </div>
                 </div>
             </div>
         </section>
         <hr class="linha-secao" />
 
-        <!-- PROJETOS -->
         <section id="projetos">
             <div class="container">
                 <h2 class="titulo-secao">Projetos</h2>
@@ -645,15 +401,20 @@
 
                     <!-- Projeto 1: Galeria Strata -->
                     <div class="projeto-card">
-                        <img
-                            src="avatar.jpg"
-                            alt="Imagem do Projeto Galeria Strata"
-                        />
+                        <div class="projeto-img-wrapper">
+                            <img
+                                src="avatar.jpg"
+                                alt="Imagem do Projeto Galeria Strata"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            />
+                            <div class="projeto-img-fallback">
+                                <i class="fa-solid fa-code"></i>
+                                <span>Galeria Strata</span>
+                            </div>
+                        </div>
                         <div class="projeto-info">
                             <h3>Galeria Strata</h3>
-                            <p>
-                                A Galeria Strata é um projeto desenvolvido para demonstrar habilidades avançadas com Next.js e HTML, incluindo consumo de APIs REST, manipulação de estados complexos e otimização de requisições assíncronas.
-                            </p>
+                            <p>A Galeria Strata é um projeto desenvolvido para demonstrar habilidades avançadas com Next.js e HTML, incluindo consumo de APIs REST, manipulação de estados complexos e otimização de requisições assíncronas.</p>
                             <div class="projeto-links">
                                 <a href="https://projeto-strata-daniel-tapia.vercel.app/" target="_blank" rel="noopener noreferrer">
                                     Visitar Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -662,103 +423,83 @@
                         </div>
                     </div>
 
+                    <!-- Projeto 2: NeuroFocus -->
                     <div class="projeto-card">
-    <img
-        src="https://api.screenshotone.com/take?url=https://neurofocus.vercel.app/&viewport_width=800&viewport_height=450&format=jpg"
-        alt="neurofocus.jpg"
-        onerror="this.onerror=null; this.src='https://placehold.co/400x150/1e1e1e/9b59b6?text=NeuroFocus';"
-    />
-    <div class="projeto-info">
-        <h3>NeuroFocus</h3>
-        <p>
-            O NeuroFocus é uma aplicação focada em produtividade e bem-estar, utilizando tecnologias modernas para criar uma interface intuitiva e funcional que auxilia na gestão de foco e tarefas.
-        </p>
-        <div class="projeto-links">
-            <a href="https://neurofocus.vercel.app/" target="_blank" rel="noopener noreferrer">
-                Visitar Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
-    </div>
-</div>
+                        <div class="projeto-img-wrapper">
+                            <img
+                                id="img-neurofocus"
+                                src=""
+                                alt="Screenshot do NeuroFocus"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            />
+                            <div class="projeto-img-fallback">
+                                <i class="fa-solid fa-brain"></i>
+                                <span>NeuroFocus</span>
+                            </div>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>NeuroFocus</h3>
+                            <p>O NeuroFocus é uma aplicação focada em produtividade e bem-estar, utilizando tecnologias modernas para criar uma interface intuitiva e funcional que auxilia na gestão de foco e tarefas.</p>
+                            <div class="projeto-links">
+                                <a href="https://neurofocus.vercel.app/" target="_blank" rel="noopener noreferrer">
+                                    Visitar Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Projeto 3: Landing Page Joias -->
-                  <div class="projeto-card">
-    <img
-        src="https://api.screenshotone.com/take?url=https://lading-page-joias.vercel.app/&viewport_width=800&viewport_height=450&format=jpg"
-        alt="Screenshot do Projeto Landing Page Joias"
-        onerror="this.onerror=null; this.src='https://placehold.co/400x150/1e1e1e/9b59b6?text=Landing+Page+Joias';"
-    />
-    <div class="projeto-info">
-        <h3>Landing Page Joias</h3>
-        <p>
-            Uma landing page elegante e responsiva para uma loja de joias, com foco em design atrativo, apresentação de produtos e experiência do usuário para aumentar conversões.
-        </p>
-        <div class="projeto-links">
-            <a href="https://lading-page-joias.vercel.app/" target="_blank" rel="noopener noreferrer">
-                Visitar Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
-    </div>
-</div>
+                    <div class="projeto-card">
+                        <div class="projeto-img-wrapper">
+                            <img
+                                id="img-joias"
+                                src=""
+                                alt="Screenshot da Landing Page Joias"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            />
+                            <div class="projeto-img-fallback">
+                                <i class="fa-solid fa-gem"></i>
+                                <span>Landing Page Joias</span>
+                            </div>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Landing Page Joias</h3>
+                            <p>Uma landing page elegante e responsiva para uma loja de joias, com foco em design atrativo, apresentação de produtos e experiência do usuário para aumentar conversões.</p>
+                            <div class="projeto-links">
+                                <a href="https://lading-page-joias.vercel.app/" target="_blank" rel="noopener noreferrer">
+                                    Visitar Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </section>
         <hr class="linha-secao" />
 
-        <!-- HABILIDADES -->
         <section id="habilidades">
             <div class="container">
                 <h2 class="titulo-secao">Habilidades</h2>
                 <div class="habilidades-icons">
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js" title="Node.js" />
-                        <span>Node.js</span>
-                    </div>
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" title="Next.js" />
-                        <span>Next.js</span>
-                    </div>
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" title="HTML5" />
-                        <span>HTML5</span>
-                    </div>
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" title="CSS3" />
-                        <span>CSS3</span>
-                    </div>
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" title="Tailwind CSS" />
-                        <span>Tailwind CSS</span>
-                    </div>
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript" />
-                        <span>JavaScript</span>
-                    </div>
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" title="Java" />
-                        <span>Java</span>
-                    </div>
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React" />
-                        <span>React</span>
-                    </div>
-                    <div>
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git" />
-                        <span>Git</span>
-                    </div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js" /><span>Node.js</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" /><span>Next.js</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" /><span>HTML5</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" /><span>CSS3</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /><span>Tailwind CSS</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" /><span>JavaScript</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" /><span>Java</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /><span>React</span></div>
+                    <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" /><span>Git</span></div>
                 </div>
             </div>
         </section>
         <hr class="linha-secao" />
 
-        <!-- CONTATO -->
         <section id="contato">
             <div class="container">
                 <h2 class="titulo-secao">Contato</h2>
-                <p style="text-align: center; font-size: 1.2rem; color: var(--cor-texto-secundaria);">
-                    Vamos conversar? Me encontre nas redes abaixo!
-                </p>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--cor-texto-secundaria);">Vamos conversar? Me encontre nas redes abaixo!</p>
                 <div class="redes-sociais">
                     <a href="https://www.linkedin.com/in/annaschmidt-dev" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn de Anna Schmidt">
                         <i class="fa-brands fa-linkedin-in"></i>
@@ -781,17 +522,49 @@
     <button id="btn-topo" title="Voltar ao topo">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
-
-    <!-- Botão de música (fica oculto por padrão; aparece se autoplay for bloqueado) -->
     <button id="btn-musica">🎵 Ativar Música</button>
-
-    <!-- Áudio de fundo (apenas um elemento) -->
     <audio id="musicaFundo" loop>
         <source src="music.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio HTML5.
     </audio>
 
     <script>
+        // --- Carrega screenshots via Microlink API ---
+        // Tenta até 3 fontes diferentes por projeto, na ordem
+        function carregarScreenshot(imgId, url) {
+            const img = document.getElementById(imgId);
+            if (!img) return;
+
+            const fontes = [
+                // Microlink (gratuito, sem API key)
+                `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`,
+                // Fallback 2: miniatura via Google (funciona para sites indexados)
+                `https://www.google.com/s2/favicons?domain=${encodeURIComponent(url)}&sz=128`,
+            ];
+
+            let tentativa = 0;
+
+            function tentar() {
+                if (tentativa >= fontes.length) {
+                    // Todas falharam: mostra fallback visual
+                    img.style.display = 'none';
+                    img.nextElementSibling.style.display = 'flex';
+                    return;
+                }
+                img.src = fontes[tentativa];
+                img.onerror = () => {
+                    tentativa++;
+                    tentar();
+                };
+            }
+
+            tentar();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            carregarScreenshot('img-neurofocus', 'https://neurofocus.vercel.app/');
+            carregarScreenshot('img-joias', 'https://lading-page-joias.vercel.app/');
+        });
+
         // --- Efeito de digitação ---
         const typingElement = document.querySelector(".typing-effect");
         const phrases = [
@@ -799,43 +572,32 @@
             "Criadora de Sites e Interfaces Interativas",
             "Apaixonada por Tecnologia"
         ];
-        let currentPhraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        let currentPhraseIndex = 0, charIndex = 0, isDeleting = false;
 
         function type() {
             const currentPhrase = phrases[currentPhraseIndex];
             typingElement.textContent = currentPhrase.substring(0, charIndex);
-
             if (!isDeleting && charIndex < currentPhrase.length) {
-                charIndex++;
-                setTimeout(type, 100);
+                charIndex++; setTimeout(type, 100);
             } else if (isDeleting && charIndex > 0) {
-                charIndex--;
-                setTimeout(type, 50);
+                charIndex--; setTimeout(type, 50);
             } else {
                 isDeleting = !isDeleting;
-                if (!isDeleting) {
-                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-                }
+                if (!isDeleting) currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
                 setTimeout(type, 1000);
             }
         }
-
         if (typingElement) type();
 
         // --- Menu hamburguer ---
         const menuHamburguer = document.querySelector('.menu-hamburguer');
         const navLinks = document.querySelector('.nav-links');
-
         menuHamburguer.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const icon = menuHamburguer.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-xmark');
         });
-
-        // Fecha o menu ao clicar em um link
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -845,47 +607,29 @@
             });
         });
 
-        // --- Scroll: header + botão topo ---
+        // --- Scroll ---
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-
-            const btnTopo = document.getElementById('btn-topo');
-            btnTopo.classList.toggle('show', window.scrollY > 300);
+            document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50);
+            document.getElementById('btn-topo').classList.toggle('show', window.scrollY > 300);
         });
-
         document.getElementById('btn-topo').addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // --- Controle de música ---
+        // --- Música ---
         window.addEventListener('DOMContentLoaded', () => {
             const musica = document.getElementById('musicaFundo');
             const btnMusica = document.getElementById('btn-musica');
             let tocando = false;
-
             musica.volume = 0.2;
-
-            musica.play().then(() => {
-                tocando = true;
-                // Autoplay funcionou — botão permanece oculto
-            }).catch(() => {
-                // Autoplay bloqueado — exibe botão para o usuário ativar
-                btnMusica.style.display = 'block';
-            });
-
+            musica.play().then(() => { tocando = true; }).catch(() => { btnMusica.style.display = 'block'; });
             btnMusica.addEventListener('click', () => {
                 if (tocando) {
                     musica.pause();
                     btnMusica.textContent = '🎵 Ativar Música';
                     tocando = false;
                 } else {
-                    musica.play().then(() => {
-                        btnMusica.textContent = '⏸ Pausar Música';
-                        tocando = true;
-                    }).catch(() => {
-                        console.warn('Erro ao tentar tocar a música.');
-                    });
+                    musica.play().then(() => { btnMusica.textContent = '⏸ Pausar Música'; tocando = true; });
                 }
             });
         });
