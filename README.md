@@ -20,7 +20,7 @@
 
 ## ✦ Sobre mim
 
-Olá! Sou a **Anna**, tenho 21 anos e sou apaixonada por programação e criação de soluções que fazem a diferença. Estou em constante evolução — estudando, construindo projetos e aprimorando minhas habilidades nas tecnologias mais relevantes do mercado.
+Olá! Sou Anna Schmidt, tenho 21 anos e sou apaixonada por programação e criação de soluções que fazem a diferença. Estou em constante evolução — estudando, construindo projetos e aprimorando minhas habilidades nas tecnologias mais relevantes do mercado.
 
 Acredito que a tecnologia tem o poder de transformar o mundo, e quero fazer parte dessa transformação. 🌍
 
