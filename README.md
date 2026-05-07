@@ -24,18 +24,6 @@ Olá! Sou a **Anna**, tenho 21 anos e sou apaixonada por programação e criaç�
 
 Acredito que a tecnologia tem o poder de transformar o mundo, e quero fazer parte dessa transformação. 🌍
 
-```javascript
-const anna = {
-  idade: 21,
-  foco: "Frontend Development",
-  objetivo: "Criar experiências que façam a diferença",
-  aprendendo: ["Next.js", "Node.js", "Java"],
-  disponível: true // aberta a oportunidades! ✨
-};
-```
-
-<br/>
-
 ## 🛠️ Tecnologias & Ferramentas
 
 <div align="center">
